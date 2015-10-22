@@ -54,3 +54,7 @@
 	default = current
 [hub]
 	protocol = ssh
+[branch]
+	autosetuprebase = always
+[branch "master"]
+	rebase = true
