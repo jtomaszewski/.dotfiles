@@ -19,7 +19,7 @@ generate/import ssh key
 
 git co dotfiles into ~/.dotfiles , and run ./update.sh
 
-clone rbenv into ~/.rbenv
+clone rbenv into ~/.rbenv and ruby-build into .rbenv/plugins/ruby-build
 
 install tmux 1.9a
 
