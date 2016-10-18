@@ -37,3 +37,7 @@ export TODO="t"
 
 # Load Bash It
 source $BASH_IT/bash_it.sh
+
+# asdf support
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
