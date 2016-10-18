@@ -22,3 +22,5 @@ git co dotfiles into ~/.dotfiles , and run ./update.sh
 clone rbenv into ~/.rbenv
 
 install tmux 1.9a
+
+install 'monaco for powerline' font - just download it and 'run' it: https://gist.github.com/baopham/1838072
