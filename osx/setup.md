@@ -24,3 +24,5 @@ clone rbenv into ~/.rbenv
 install tmux 1.9a
 
 install 'monaco for powerline' font - just download it and 'run' it: https://gist.github.com/baopham/1838072
+
+install atom and use sync-settings package to download all
