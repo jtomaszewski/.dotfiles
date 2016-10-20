@@ -11,7 +11,7 @@
   - xcode dev tools
   - brew
 
-brew install hub wget tmux 
+brew install hub wget tmux reattach-to-user-namespace
 
 from github fish-shell download 2.1.2 pkg and install it
 
