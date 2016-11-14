@@ -1,0 +1,6 @@
+[auth]
+username=jacektomaszewski
+
+[options]
+scm = git
+protocol = ssh
