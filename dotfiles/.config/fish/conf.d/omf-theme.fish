@@ -5,4 +5,4 @@ set -g theme_display_date no
 set -g theme_display_user yes
 set -g default_user jtomaszewski
 
-set -g theme_color_scheme zenburn
+set -g theme_color_scheme solarized-dark
