@@ -7,3 +7,6 @@
 [submodule "vendor/bash_it"]
 	path = vendor/bash_it
 	url = https://github.com/revans/bash-it.git
+[submodule "vendor/oh-my-fish"]
+	path = vendor/oh-my-fish
+	url = git@github.com:oh-my-fish/oh-my-fish.git
