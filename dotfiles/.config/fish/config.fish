@@ -46,3 +46,5 @@ set -x LESS_TERMCAP_us \e'[04;38;5;146m' # begin underline
 
 # asdf
 source ~/.asdf/asdf.fish
+
+set -g fish_user_paths "/opt/boxen/homebrew/opt/ab/bin" $fish_user_paths
