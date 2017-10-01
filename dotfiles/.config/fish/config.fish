@@ -6,10 +6,6 @@ if test -f $HOME/.dotfiles/custom/config.fish
   . $HOME/.dotfiles/custom/config.fish
 end
 
-# Theme
-set theme_display_user yes
-set default_user slimak
-
 set TERM xterm-256color
 
 if which direnv > /dev/null
