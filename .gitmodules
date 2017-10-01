@@ -1,9 +1,6 @@
 [submodule "vendor/oh-my-zsh"]
 	path = vendor/oh-my-zsh
 	url = https://github.com/jtomaszewski/oh-my-zsh.git
-[submodule "vendor/oh-my-fish"]
-	path = vendor/oh-my-fish
-	url = https://github.com/jtomaszewski/oh-my-fish.git
 [submodule "vendor/tmuxinator"]
 	path = vendor/tmuxinator
 	url = https://github.com/aziz/tmuxinator.git

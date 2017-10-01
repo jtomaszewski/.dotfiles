@@ -1,0 +1,1 @@
+/Users/jtomaszewski/.oh-my-fish/themes/bobthefish/fish_prompt.fish
