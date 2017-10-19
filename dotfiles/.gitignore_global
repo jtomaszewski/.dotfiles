@@ -48,7 +48,7 @@ Icon^M
 *~
 \#*\#
 /tags
-
+.vscode
 
 # my custom ignored files
 .credentials
