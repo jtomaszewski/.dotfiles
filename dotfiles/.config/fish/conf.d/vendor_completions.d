@@ -1,0 +1,1 @@
+/brew/share/fish/vendor_completions.d/
