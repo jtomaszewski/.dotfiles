@@ -52,3 +52,5 @@ Icon^M
 
 # my custom ignored files
 .credentials
+
+.envrc
