@@ -1,4 +1,6 @@
 package bundler
+package foreign-env
+package nvm
 package rails
 theme bobthefish
 theme default
