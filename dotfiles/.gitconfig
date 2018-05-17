@@ -61,3 +61,5 @@
 	autosetuprebase = always
 [branch "master"]
 	rebase = true
+[merge]
+	renamelimit = 3600
