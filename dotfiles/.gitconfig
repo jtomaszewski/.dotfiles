@@ -36,6 +36,7 @@
   ptag = "!f(){ git ac $1; git tag $1 && git push && git push --tags; }; f"
   up = pull --rebase --autostash
   upm = pull --rebase --autostash origin master
+  rebasem = rebase -i --autosquash origin/master --no-verify
 [color "status"]
   added = green
   modified = red
