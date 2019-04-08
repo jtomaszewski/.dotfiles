@@ -68,3 +68,6 @@
 	renamelimit = 3600
 [credential]
 	helper = osxkeychain
+
+[includeIf "gitdir:~/src/mgm/"]
+    path = ~/src/mgm/.gitconfig
