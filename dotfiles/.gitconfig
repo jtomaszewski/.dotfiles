@@ -66,3 +66,5 @@
 	rebase = true
 [merge]
 	renamelimit = 3600
+[credential]
+	helper = osxkeychain
