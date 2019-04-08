@@ -12,6 +12,8 @@
   aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
   authors = "!git log --format='%aN <%aE>' | awk '{arr[$0]++} END{for (i in arr){print arr[i], i;}}' | sort -rn | cut -d' ' -f2-"
   b = branch
+  branches = "! f() { for k in $(git branch $@ | sed 's/^..//; s/ .*//'); do echo "$(git log -1 --pretty='%Cgreen%ci %Cblue(%cr)%Creset ' $k) $k" ; done | sort ; }; f"
+  bls = branches
   c = commit
   ca = commit --amend --reuse-message=HEAD
   cl = clone
