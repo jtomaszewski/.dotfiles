@@ -26,6 +26,11 @@ set -x LESS_TERMCAP_ue \e'[0m'           # end underline
 set -x LESS_TERMCAP_us \e'[04;38;5;146m' # begin underline
 
 # asdf
-source ~/.asdf/asdf.fish
+if test -f ~/.asdf/asdf.fish
+  source ~/.asdf/asdf.fish
+end
 
 set -g fish_user_paths "/opt/boxen/homebrew/opt/ab/bin" $fish_user_paths
+
+set -x LC_ALL en_US.UTF-8
+set -x LC_CTYPE en_US.UTF-8

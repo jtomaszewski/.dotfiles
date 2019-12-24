@@ -3,6 +3,6 @@ set -g theme_display_ruby yes
 set -g theme_display_date no
 
 set -g theme_display_user yes
-set -g default_user jtomaszewski
+set -g default_user slimak
 
 set -g theme_color_scheme solarized-dark
