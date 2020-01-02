@@ -1,0 +1,37 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
+brew "asdf"
+# User-friendly command-line shell for UNIX-like operating systems
+brew "fish"
+# Add GitHub support to git on the command-line
+brew "hub"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
+# Keep your Mac's application settings in sync
+brew "mackup"
+# Manage multiple NodeJS versions
+brew "nodenv"
+# Reattach process (e.g., tmux) to background
+brew "reattach-to-user-namespace"
+# Utility that provides fast incremental file transfer
+brew "rsync"
+# Fast and accurate code counter with complexity and COCOMO estimates
+brew "scc"
+# Text interface for Git repositories
+brew "tig"
+# Terminal multiplexer
+brew "tmux"
+# Internet file retriever
+brew "wget"
+cask "calibre"
+cask "discord"
+cask "firefox"
+cask "keka"
+cask "kindle"
+cask "magicprefs"
+cask "skype"
+cask "spotify"
+cask "transmission"
+cask "vlc"
