@@ -1,5 +1,11 @@
 #!/bin/bash
 
+readlink_cmd="readlink"
+if [[ $OSTYPE == darwin* ]]; then
+  # Use greadlink on the mac
+  readlink_cmd="greadlink"
+fi
+
 timestamp() {
   date +"%s"
 }
@@ -19,19 +25,27 @@ create_symlink() {
   backup=$3
   filename=`basename $source`
 
-  # # Remove if it's a symlink
+  # If it's a symlink
   if [[ -h $target ]]; then
-    echo "Existing symlink to \"$filename\" has been removed."
-    rm $target
+    root=$($readlink_cmd -f $target)
+    # If it's a symlink leading to ~/.dotfiles, remove it
+    if [[ $root == $DOTFILES_REPOSITORY_DIR/* ]]; then
+      echo "Removing symlink to \"$filename\" located in \"$target\"."
+      rm $target
+    # Otherwise, find the root of that link, and use that as the target for the symlink
+    else
+      create_symlink $source $root $backup
+      return
+    fi
   fi
 
-  # # Move, if it exists
+  # Move, if it exists
   if [[ -e $target ]]; then
-    echo "Existing \"$filename\" has been moved to \"$backup\"."
     mv $target $backup
+    echo "Moving existing \"$target\" to \"$backup\"."
   fi
 
-  echo "Creating symlink to \"$filename\" in home directory."
+  echo "Creating symlink to \"$target\" in \"$source\"."
   ln -s $source $target
 }
 
