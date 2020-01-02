@@ -11,7 +11,7 @@ fi
 cd $HOME
 git clone https://github.com/jtomaszewski/.dotfiles
 cd .dotfiles
-./update.sh
+./install.sh
 
 read -p "do you currently have sudo rights and apt-get command? (y/n)" answer
 if [ "$answer" = "y" ] ; then

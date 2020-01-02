@@ -19,7 +19,6 @@ create_symlink() {
   backup=$3
   filename=`basename $source`
 
-
   # # Remove if it's a symlink
   if [[ -h $target ]]; then
     echo "Existing symlink to \"$filename\" has been removed."
@@ -33,7 +32,7 @@ create_symlink() {
   fi
 
   echo "Creating symlink to \"$filename\" in home directory."
-  ln -s $source $target 
+  ln -s $source $target
 }
 
 for file in $DOTFILES_DIR/.* $DOTFILES_DIR/*; do
