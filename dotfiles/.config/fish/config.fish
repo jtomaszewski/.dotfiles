@@ -33,3 +33,7 @@ if test -f /usr/local/opt/asdf/asdf.fish
 end
 
 set -g fish_user_paths "/opt/boxen/homebrew/opt/ab/bin" $fish_user_paths
+
+set -x ANDROID_SDK /Users/$USER/Library/Android/sdk
+
+set PATH $PATH /Users/$USER/Library/Android/sdk/platform-tools

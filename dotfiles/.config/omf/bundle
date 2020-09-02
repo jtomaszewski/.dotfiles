@@ -1,3 +1,4 @@
+package aws
 package bundler
 package foreign-env
 package nodenv
