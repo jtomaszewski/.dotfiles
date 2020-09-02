@@ -6,6 +6,8 @@ if test -f $HOME/.dotfiles/custom/config.fish
   . $HOME/.dotfiles/custom/config.fish
 end
 
+set -U __done_notify_sound 1
+
 set TERM xterm-256color
 
 if which direnv > /dev/null
