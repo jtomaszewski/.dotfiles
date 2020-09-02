@@ -67,6 +67,8 @@
 	autosetuprebase = always
 [branch "master"]
 	rebase = true
+[branch "main"]
+	rebase = true
 [merge]
 	renamelimit = 3600
 [credential]
