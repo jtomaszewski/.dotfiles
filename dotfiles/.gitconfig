@@ -35,6 +35,7 @@
   subtree-push = "!f(){ git subtree split --prefix $1 -b $3 && git push $2 $2:$3; }; f" # same as above
   publish = "!f(){ git push -u $1 $(git symbolic-ref --short HEAD); }; f"
   pushfl = push --force-with-lease
+  pu = !git push origin `git branch --show-current`
   ptag = "!f(){ git ac $1; git tag $1 && git push && git push --tags; }; f"
   up = pull --rebase --autostash
   upm = pull --rebase --autostash origin master
