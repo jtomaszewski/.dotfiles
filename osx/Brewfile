@@ -1,37 +1,130 @@
+tap "aws/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
+tap "homebrew/cask-versions"
 tap "homebrew/core"
+tap "homebrew/services"
+# Automatic configure script builder
+brew "autoconf"
+# Tool for generating GNU Standards-compliant Makefiles
+brew "automake"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
+# Official Amazon AWS command-line interface
+brew "awscli"
+# Parser generator
+brew "bison"
+# Library for manipulating PNG images
+brew "libpng"
+# Software library to render fonts
+brew "freetype"
+# GNU internationalization (i18n) and localization (l10n) library
+brew "gettext"
+# Enables you to reproduce the CircleCI environment locally
+brew "circleci"
+# Dependency Manager for PHP
+brew "composer"
+# Load/unload environment variables based on $PWD
+brew "direnv"
+# Distributed search & analytics engine
+brew "elasticsearch", restart_service: true
+# Manage compile and link flags for libraries
+brew "pkg-config"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c"
+# Image manipulation library
+brew "jpeg"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
+# Lossy LZW compression, reduces GIF file sizes by 30-50%
+brew "giflossy"
+# Simple jira command-line client in Go
+brew "go-jira"
+# Improved top (interactive process viewer)
+brew "htop"
 # Add GitHub support to git on the command-line
 brew "hub"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Network authentication protocol
+brew "krb5"
+# Sophisticated file transfer program
+brew "lftp"
+# BSD-style licensed readline alternative
+brew "libedit"
+# Conversion library
+brew "libiconv"
+# Library to render SVG files using Cairo
+brew "librsvg"
+# GNOME XML library
+brew "libxml2"
+# C library for reading, creating, and modifying zip archives
+brew "libzip"
 # Keep your Mac's application settings in sync
 brew "mackup"
+# Open source relational database management system
+brew "mysql", restart_service: true
 # Manage multiple NodeJS versions
 brew "nodenv"
+# Libraries for security-enabled client and server applications
+brew "nss"
+# Tool to automatically fix PHP coding standards issues
+brew "php-cs-fixer"
+# General-purpose scripting language
+brew "php@7.2"
+# Object-relational database system
+brew "postgresql", restart_service: true
+# Generate C-based recognizers from regular expressions
+brew "re2c"
 # Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
 # Utility that provides fast incremental file transfer
 brew "rsync"
 # Fast and accurate code counter with complexity and COCOMO estimates
 brew "scc"
+# Send macOS User Notifications from the command-line
+brew "terminal-notifier"
 # Text interface for Git repositories
 brew "tig"
 # Terminal multiplexer
 brew "tmux"
+# Manage complex tmux sessions easily
+brew "tmuxinator"
 # Internet file retriever
 brew "wget"
+# Command-line interface for WordPress
+brew "wp-cli"
+# Download YouTube videos from the command-line
+brew "youtube-dl"
+# Process YAML documents from the CLI
+brew "yq"
+# General-purpose lossless data-compression library
+brew "zlib"
+cask "1password-cli"
+cask "adoptopenjdk8"
+cask "android-platform-tools"
+cask "android-studio"
+cask "aws-vault"
+cask "barrier"
 cask "calibre"
+cask "cyberduck"
+cask "dbeaver-community"
 cask "discord"
+cask "docker"
 cask "firefox"
+cask "inkscape"
 cask "keka"
 cask "kindle"
+cask "libreoffice"
 cask "magicprefs"
+cask "react-native-debugger"
+cask "send-to-kindle"
 cask "skype"
 cask "spotify"
 cask "transmission"
+cask "use-engine"
 cask "vlc"
