@@ -40,20 +40,25 @@ else
   echo "Make sure, you have installed and working $REQUIRED_PACKAGES."
 fi
 
-read -p "Do you want to set default shell? (by chsh - please, don't do it on root!): \"fish\"/\"zsh\"? (type nothing, if you don't want to)" answer
-if [ "$answer" = "zsh" ]; then
-  if [ -n `which zsh` ]; then
-    chsh -s `which zsh`
-  else
-    echo "no zsh isntalled!"
+if command -v chsh &> /dev/null; then
+  read -p "Do you want to set default shell? (by chsh - please, don't do it on root!): \"fish\"/\"zsh\"? (type nothing, if you don't want to)" answer
+  if [ "$answer" = "zsh" ]; then
+    if [ -n `which zsh` ]; then
+      chsh -s `which zsh`
+    else
+      echo "no zsh isntalled!"
+    fi
+  elif [ "$answer" = "fish" ]; then
+    echo "NOTE: you need to install fish2 manually (see their website)"
+    if [ -n `which fish` ]; then
+      chsh -s /usr/bin/fish
+    else
+      echo "no fish installed!"
+    fi
   fi
-elif [ "$answer" = "fish" ]; then
-  echo "NOTE: you need to install fish2 manually (see their website)"
-  if [ -n `which fish` ]; then
-    chsh -s /usr/bin/fish
-  else
-    echo "no fish installed!"
-  fi
+else
+  echo "We recommend changing your default shell to \`$(which zsh)\`"
+  echo "You can do this by editing your user enty in /etc/passwd (\`vi /etc/passwd\`)"
 fi
 
 echo "All done"
