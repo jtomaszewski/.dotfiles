@@ -39,7 +39,7 @@ if [ "$answer" = "y" ] ; then
   # mkdir -p ~/bin/hub
   # curl http://hub.github.com/standalone -sLo ~/bin/hub && chmod +x ~/bin/hub
 else
-  echo "Make sure, you have installed and working $REQUIRED_PACKAGES."
+  echo "Make sure you have installed and working $REQUIRED_PACKAGES."
 fi
 
 if command -v chsh &> /dev/null; then
