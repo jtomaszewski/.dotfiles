@@ -1,6 +1,8 @@
 #!/bin/sh
 
-set -exo pipefail
+set -eo pipefail
+
+[ "$DEBUG" = "true" ] && set -x
 
 REQUIRED_PACKAGES="git-core htop wget curl zsh vim tmux"
 
