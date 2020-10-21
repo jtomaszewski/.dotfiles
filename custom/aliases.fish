@@ -21,7 +21,9 @@ alias dpsa="docker ps -a"
 # Get images
 alias di="docker images"
 # Print and follow container's log
-alias dl='docker logs -f'
+function dl
+    docker logs -f (did $argv[1]) $argv[2..-1]
+end
 # List the docker images
 alias di='docker images | grep -v none'
 # List the docker volumes

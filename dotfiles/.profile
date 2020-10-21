@@ -52,7 +52,9 @@ if command -v docker &> /dev/null; then
   # Get images
   alias di="docker images"
   # Print and follow container's log
-  alias dl='docker logs -f'
+  dl() {
+    docker logs -f $(did $1) "${@:2}"
+  }
   # List the docker images
   alias di='docker images | grep -v none'
   # List the docker volumes
