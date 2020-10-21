@@ -35,7 +35,7 @@ if [ "$answer" = "y" ] ; then
     echo "$REQUIRED_PACKAGES"
   fi
 else
-  echo "Make sure you have installed and working $REQUIRED_PACKAGES."
+  echo "Make sure you have installed following packages: $REQUIRED_PACKAGES"
 fi
 
 if command -v chsh &> /dev/null; then
