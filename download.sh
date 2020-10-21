@@ -34,10 +34,6 @@ if [ "$answer" = "y" ] ; then
     echo "Thus, you should install the following manually, using your OS package manager:"
     echo "$REQUIRED_PACKAGES"
   fi
-
-  # Hub not working yet - install it manually
-  # mkdir -p ~/bin/hub
-  # curl http://hub.github.com/standalone -sLo ~/bin/hub && chmod +x ~/bin/hub
 else
   echo "Make sure you have installed and working $REQUIRED_PACKAGES."
 fi
