@@ -1,6 +1,7 @@
 package aws
 package bundler
 package foreign-env
+package https://github.com/wfscheper/plugin-docker
 package nodenv
 package rails
 theme bobthefish
