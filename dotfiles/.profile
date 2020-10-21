@@ -64,11 +64,15 @@ if command -v docker &> /dev/null; then
   # Run an image
   alias drun='docker run --rm -it'
   # Find container by id or name, and exec sth on it
-  dex() { docker exec -it $(did $1) "${@:2}" }
+  dex() {
+    docker exec -it $(did $1) "${@:2}"
+  }
   # Find container by id or name, and enter terminal in it
-  dterm() { dex $1 bash }
+  dterm() {
+    dex $1 bash
+  }
   # Stop all containers
-  alias dstop 'docker stop $(docker ps -aq)'
+  alias dstop='docker stop $(docker ps -aq)'
   # Remove all containers
   alias drm='docker rm -f $(docker ps -aq)'
   # Remove all images
@@ -77,7 +81,8 @@ if command -v docker &> /dev/null; then
   alias drmid='docker rmi $(docker images --quiet --filter "dangling=true")'
   # Remove all volumes
   alias drmv='docker volume rm $(docker volume ls -q)'
-  alias dclean 'docker builder prune -af && docker image prune -af && docker system prune -af'
+  # Clear all cache
+  alias dclean='docker builder prune -af && docker image prune -af && docker system prune -af'
 fi
 
 if test -d $HOME/.nvm; then
