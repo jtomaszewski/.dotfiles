@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -e
+set -exo pipefail
 
 REQUIRED_PACKAGES="git-core htop wget curl zsh vim tmux"
 
@@ -20,13 +20,13 @@ else
 fi
 ./install.sh
 
-read -p "do you currently have sudo rights and apt-get command? (y/n)" answer
+read -p "do you currently have sudo rights? (y/n)" answer
 if [ "$answer" = "y" ] ; then
   if which apt-get 2&>1 > /dev/null; then
     sudo apt-get update
     sudo apt-get install -y $REQUIRED_PACKAGES
   elif which yum 2&>1 > /dev/null; then
-    yum install -y $REQUIRED_PACKAGES
+    sudo yum install -y $REQUIRED_PACKAGES
   else
     echo "We couldn't find apt-get on this machine."
     echo "Thus, you should install the following manually, using your OS package manager:"
