@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 REQUIRED_PACKAGES="git-core htop wget curl zsh vim tmux"
 
 if test ! -n "`which git`"; then
@@ -15,8 +17,16 @@ cd .dotfiles
 
 read -p "do you currently have sudo rights and apt-get command? (y/n)" answer
 if [ "$answer" = "y" ] ; then
-  sudo apt-get update
-  sudo apt-get install -y $REQUIRED_PACKAGES
+  if which apt-get 2&>1 > /dev/null; then
+    sudo apt-get update
+    sudo apt-get install -y $REQUIRED_PACKAGES
+  elif which yum 2&>1 > /dev/null; then
+    yum install -y $REQUIRED_PACKAGES
+  else
+    echo "We couldn't find apt-get on this machine."
+    echo "Thus, you should install the following manually, using your OS package manager:"
+    echo "$REQUIRED_PACKAGES"
+  fi
 
   # Hub not working yet - install it manually
   # mkdir -p ~/bin/hub
