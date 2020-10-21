@@ -11,8 +11,13 @@ if test ! -n "`which git`"; then
 fi
 
 cd $HOME
-git clone https://github.com/jtomaszewski/.dotfiles
-cd .dotfiles
+if test -d .dotfiles; then
+  cd .dotfiles
+  git pull -f
+else
+  git clone https://github.com/jtomaszewski/.dotfiles
+  cd .dotfiles
+fi
 ./install.sh
 
 read -p "do you currently have sudo rights and apt-get command? (y/n)" answer
