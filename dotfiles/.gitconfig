@@ -43,6 +43,8 @@
   rebasec = rebase --continue
   ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
   undo = reset HEAD^
+  lastcommit = "!f(){ cd -- ${GIT_PREFIX:-.}; git log -1 --pretty=format:%h -- $@; }; f"
+  fixup = "!f(){ git c --fixup $(git lastcommit $(git diff --name-only --cached)) $@;}; f"
 [color "status"]
   added = green
   modified = red
