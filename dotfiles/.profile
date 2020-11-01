@@ -53,7 +53,7 @@ if command -v docker &> /dev/null; then
   alias di="docker images"
   # Print and follow container's log
   dl() {
-    docker logs -f $(did $1) "${@:2}"
+    docker logs -f $(did $1 | head -n 1) "${@:2}"
   }
   # List the docker images
   alias di='docker images | grep -v none'
@@ -67,7 +67,7 @@ if command -v docker &> /dev/null; then
   alias drun='docker run --rm -it'
   # Find container by id or name, and exec sth on it
   dex() {
-    docker exec -it $(did $1) "${@:2}"
+    docker exec -it $(did $1 | head -n 1) "${@:2}"
   }
   # Find container by id or name, and enter terminal in it
   dterm() {

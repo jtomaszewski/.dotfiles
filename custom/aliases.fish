@@ -22,7 +22,7 @@ alias dpsa="docker ps -a"
 alias di="docker images"
 # Print and follow container's log
 function dl
-    docker logs -f (did $argv[1]) $argv[2..-1]
+    docker logs -f (did $argv[1] | head -n 1) $argv[2..-1]
 end
 # List the docker images
 alias di='docker images | grep -v none'
@@ -36,7 +36,7 @@ alias dm='docker-machine'
 alias drun='docker run --rm -it'
 # Find container by id or name, and exec sth on it
 function dex
-    docker exec -it (did $argv[1]) $argv[2..-1]
+    docker exec -it (did $argv[1] | head -n 1) $argv[2..-1]
 end
 # Find container by id or name, and enter terminal in it
 function dterm
