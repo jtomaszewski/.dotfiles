@@ -28,11 +28,6 @@ set -x LESS_TERMCAP_so \e'[38;5;246m' # begin standout-mode - info box
 set -x LESS_TERMCAP_ue \e'[0m' # end underline
 set -x LESS_TERMCAP_us \e'[04;38;5;146m' # begin underline
 
-# asdf
-if test -f /usr/local/opt/asdf/asdf.fish
-    source /usr/local/opt/asdf/asdf.fish
-end
-
 set -g fish_user_paths "/opt/boxen/homebrew/opt/ab/bin" $fish_user_paths
 
 set -x ANDROID_SDK /Users/$USER/Library/Android/sdk
