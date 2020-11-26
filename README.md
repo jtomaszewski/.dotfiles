@@ -8,8 +8,7 @@
 ### How to install?
 
 ```bash
-TMPF=$(mktemp)
-curl https://raw.githubusercontent.com/jtomaszewski/.dotfiles/master/download.sh > $TMPF && sh $TMPF
+TMPF=$(mktemp) && curl https://raw.githubusercontent.com/jtomaszewski/.dotfiles/master/download.sh > $TMPF && sh $TMPF
 ```
 
 For setting up your OS X machine from scratch, see `osx/README.md` .
