@@ -9,4 +9,4 @@
 	url = https://github.com/revans/bash-it.git
 [submodule "vendor/oh-my-fish"]
 	path = vendor/oh-my-fish
-	url = git@github.com:oh-my-fish/oh-my-fish.git
+	url = https://github.com/oh-my-fish/oh-my-fish.git
