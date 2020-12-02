@@ -1,6 +1,3 @@
-[user]
-  name = Jacek Tomaszewski
-  email = jacek@jtom.me
 #[http]
 #  sslVerify = false
 [alias]
