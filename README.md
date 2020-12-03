@@ -15,9 +15,9 @@ For setting up your OS X machine from scratch, see `osx/README.md` .
 
 ### Scripts description
 
-- init.sh - bootstraps all installation. Everything is done by a user prompt dialog - don't worry, it won't do antyhing if you keep pressing `n`.
-- install.sh - updates the .dotfiles repo and run `create_symlinks.sh`
-- create_symlinks.sh - creates the symlinks to dotfiles, moving the existing to ./old/ directory
+- [`download.sh`](./download.sh) - preinstalls required packages (if user allows in the prompt), changes user's default shell (if user allows in the prompt), and sets up all the dotfiles.
+- [`install.sh`](./install.sh) - pulls recent version of the .dotfiles repo (and its' submodules), and runs `create_symlinks.sh` .
+- [`create_symlinks.sh`](./create_symlinks.sh) - creates the symlinks to dotfiles. If there are existing files at the symlinks destination paths, they will be moved to `./old` directory.
 
 # Thanks to
 
