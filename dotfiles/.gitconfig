@@ -1,5 +1,3 @@
-#[http]
-#  sslVerify = false
 [alias]
   a = add
   aa = add --all
@@ -47,7 +45,7 @@
   modified = red
   untracked = blue
 [color]
-	ui = true
+  ui = true
   diff = auto
   status = auto
   branch = auto
@@ -57,8 +55,6 @@
 [mergetool "sublime"]
   cmd = subl -w $MERGED
   trustExitCode = false
-[github]
-	user = jtomaszewski
 [push]
 	default = current
 [hub]
@@ -74,5 +70,6 @@
 [credential]
 	helper = osxkeychain
 
+# Custom git configs per directory
 [includeIf "gitdir:~/src/mgm/"]
     path = ~/src/mgm/.gitconfig
