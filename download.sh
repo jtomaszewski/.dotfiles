@@ -22,7 +22,7 @@ else
 fi
 ./install.sh
 
-read -p "do you currently have sudo rights? (y/n)" answer
+read -p "do you currently have sudo rights, and do you want to install the following packages: $REQUIRED_PACKAGES ? (y/n)" answer
 if [ "$answer" = "y" ] ; then
   if command -v apt-get &> /dev/null; then
     sudo apt-get update
