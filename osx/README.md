@@ -1,5 +1,7 @@
 # Setting up OS X
 
+- Go to Settings and configure it (preferrably, mirror old mac settings)
+
 - `xcode-select --install`; and then install Xcode from appstore
 
 - Install brew

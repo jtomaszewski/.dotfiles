@@ -4,12 +4,15 @@ tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
+tap "rtau/rancher-cli"
 # Automatic configure script builder
 brew "autoconf"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
+# Advanced SSH config - Regex, aliases, gateways, includes and dynamic hosts
+brew "assh"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Parser generator
@@ -30,18 +33,28 @@ brew "direnv"
 brew "elasticsearch", restart_service: true
 # Manage compile and link flags for libraries
 brew "pkg-config"
+# Generate introspection data for GObject libraries
+brew "gobject-introspection"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c"
 # Image manipulation library
 brew "jpeg"
+# Subtitle renderer for the ASS/SSA subtitle format
+brew "libass"
+# Blu-Ray disc playback library for media players like VLC
+brew "libbluray"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
 # Lossy LZW compression, reduces GIF file sizes by 30-50%
 brew "giflossy"
+# Enable transparent encryption/decryption of files in a git repo
+brew "git-crypt"
 # Simple jira command-line client in Go
 brew "go-jira"
+# Graph visualization software from AT&T and Bell Labs
+brew "graphviz"
 # Improved top (interactive process viewer)
 brew "htop"
 # Add GitHub support to git on the command-line
@@ -58,6 +71,8 @@ brew "lftp"
 brew "libedit"
 # Conversion library
 brew "libiconv"
+# Postgres C API library
+brew "libpq"
 # Library to render SVG files using Cairo
 brew "librsvg"
 # GNOME XML library
@@ -68,6 +83,8 @@ brew "libzip"
 brew "mackup"
 # Open source relational database management system
 brew "mysql", restart_service: true
+# NCurses Disk Usage
+brew "ncdu"
 # Manage multiple NodeJS versions
 brew "nodenv"
 # Libraries for security-enabled client and server applications
@@ -76,14 +93,20 @@ brew "nss"
 brew "php-cs-fixer"
 # General-purpose scripting language
 brew "php@7.2"
+# General-purpose scripting language
+brew "php@7.3"
 # Object-relational database system
 brew "postgresql", restart_service: true
+# Monitor data's progress through a pipe
+brew "pv"
 # Generate C-based recognizers from regular expressions
 brew "re2c"
 # Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
 # Utility that provides fast incremental file transfer
 brew "rsync"
+# Powerful, clean, object-oriented scripting language
+brew "ruby"
 # Fast and accurate code counter with complexity and COCOMO estimates
 brew "scc"
 # Send macOS User Notifications from the command-line
@@ -94,6 +117,8 @@ brew "tig"
 brew "tmux"
 # Manage complex tmux sessions easily
 brew "tmuxinator"
+# Executes a program periodically, showing output fullscreen
+brew "watch"
 # Internet file retriever
 brew "wget"
 # Command-line interface for WordPress
@@ -104,6 +129,8 @@ brew "youtube-dl"
 brew "yq"
 # General-purpose lossless data-compression library
 brew "zlib"
+# The Rancher CLI 0.6.x is a unified tool to manage your Rancher v1.6 server
+brew "rtau/rancher-cli/rancher-cli@0.6"
 cask "1password-cli"
 cask "adoptopenjdk8"
 cask "android-platform-tools"
@@ -127,4 +154,5 @@ cask "skype"
 cask "spotify"
 cask "transmission"
 cask "use-engine"
+cask "visual-studio-code"
 cask "vlc"
