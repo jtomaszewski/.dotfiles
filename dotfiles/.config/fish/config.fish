@@ -2,6 +2,10 @@ if test -d /opt/homebrew/bin
     set -x PATH /opt/homebrew/bin $PATH
 end
 
+if test -d /Users/jacek/Library/Python/2.7/bin
+    set -x PATH /Users/jacek/Library/Python/2.7/bin $PATH
+end
+
 if test -d $HOME/.bin
     set -x PATH $HOME/.bin $PATH
 end
