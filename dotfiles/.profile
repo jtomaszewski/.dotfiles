@@ -6,6 +6,13 @@ if [ -d $HOME/.rbenv/bin ]; then
   eval "$(rbenv init -)"
 fi
 
+if [ -d "/opt/homebrew/bin" ]; then
+  export PATH="/opt/homebrew/bin:$PATH"
+
+  alias i='arch -x86_64'
+  alias ibrew='arch -x86_64 /usr/local/bin/brew'
+fi
+
 if [ -d "$HOME/.local/bin" ]; then
   export PATH="$HOME/.local/bin:$PATH"
 fi
