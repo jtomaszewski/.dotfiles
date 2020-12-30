@@ -50,8 +50,9 @@
 
 - powerline
 
-  - install powerline python lib http://askubuntu.com/questions/283908/how-can-i-install-and-use-powerline-plugin
-  - download and install https://github.com/supermarin/powerline-fonts/tree/master/Monaco
+  - instal pip for python2.7 https://gist.github.com/haircut/14705555d58432a5f01f9188006a04ed
+  - install powerline `pip install --user powerline-status`
+  - download and install recommended font in https://github.com/romkatv/powerlevel10k#fonts and set it in Terminal and iTerm2 apps
 
 - dotfiles
 
