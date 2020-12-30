@@ -59,6 +59,14 @@ else
   echo "You can do this by editing your user enty in /etc/passwd (\`vi /etc/passwd\`)"
 fi
 
-echo "All done"
+echo "All done\n"
+
+echo "Additional things you'd want to do:\n"
+
+echo "1. Setup git username on your machine (we do not store it in dotfile as we don't want to store it in the repo):"
+echo "sudo git config --system user.name \"Jacek Tomaszewski\""
+echo "sudo git config --system user.email \"jacek@jtom.me\""
+echo "sudo git config --system github.user \"jtomaszewski\""
+
 
 
