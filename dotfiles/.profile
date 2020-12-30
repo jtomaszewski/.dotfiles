@@ -99,6 +99,6 @@ if test -d $HOME/.nvm; then
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 fi
 
-if test -d /Users/slimak/Library/Android/sdk; then
-  export ANDROID_SDK=/Users/slimak/Library/Android/sdk
+if test -d $HOME/Library/Android/sdk; then
+  export ANDROID_SDK=$HOME/Library/Android/sdk
 fi
