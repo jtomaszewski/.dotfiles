@@ -10,6 +10,8 @@ if test -d $HOME/.bin
     set -x PATH $HOME/.bin $PATH
 end
 
+set -q LANG; or export LANG=en_US.UTF-8
+
 . $HOME/.dotfiles/custom/aliases.fish
 if test -f $HOME/.dotfiles/custom/config.fish
     . $HOME/.dotfiles/custom/config.fish

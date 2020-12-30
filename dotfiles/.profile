@@ -1,5 +1,7 @@
 # This file is included in both bash and zsh.
 
+export LANG=${LANG:-"en_US.UTF-8"}
+
 if [ -d $HOME/.rbenv/bin ]; then
   export RBENV_ROOT=$HOME/.rbenv
   export PATH="$RBENV_ROOT/bin:$PATH"
