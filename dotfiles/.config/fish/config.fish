@@ -11,8 +11,8 @@ set -U __done_notify_sound 1
 
 set TERM xterm-256color
 
-if which direnv >/dev/null
-    eval (direnv hook fish)
+if command -v direnv &>/dev/null
+    direnv hook fish | source
 end
 
 set -x EDITOR vim
