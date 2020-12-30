@@ -4,7 +4,14 @@
 
 - `xcode-select --install`; and then install Xcode from appstore
 
-- Install brew
+- if on Apple Silicon:
+
+    - `softwareupdate --install-rosetta`
+    - install homebrew as in https://soffes.blog/homebrew-on-apple-silicon
+
+- Otherwise:
+
+    - Install brew
 
 - apps
     ```
