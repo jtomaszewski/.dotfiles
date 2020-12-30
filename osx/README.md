@@ -8,6 +8,7 @@
 
   - `softwareupdate --install-rosetta`
   - install homebrew as in https://soffes.blog/homebrew-on-apple-silicon
+  - `sudo vi /etc/paths` and add `/opt/homebrew/bin` as the first line
 
 - Otherwise:
 

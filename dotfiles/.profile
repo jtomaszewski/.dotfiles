@@ -13,7 +13,6 @@ if [ -d "$HOME/Library/Python/2.7/bin" ]; then
 fi
 
 if [ -d "/opt/homebrew/bin" ]; then
-  export PATH="/opt/homebrew/bin:$PATH"
   alias i='arch -x86_64'
   alias ibrew='arch -x86_64 /usr/local/bin/brew'
 fi
