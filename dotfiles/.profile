@@ -82,7 +82,7 @@ if command -v docker &> /dev/null; then
   }
   # Find container by id or name, and enter terminal in it
   dterm() {
-    dex $1 bash
+    dex $1 sh
   }
   # Stop all containers
   alias dstop='docker stop $(docker ps -aq)'

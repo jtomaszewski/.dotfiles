@@ -1,6 +1,6 @@
 if test -d /opt/homebrew/bin
-  alias i='arch -x86_64'
-  alias ibrew='arch -x86_64 /usr/local/bin/brew'
+    alias i='arch -x86_64'
+    alias ibrew='arch -x86_64 /usr/local/bin/brew'
 end
 
 # Short alias for docker command
@@ -45,7 +45,7 @@ function dex
 end
 # Find container by id or name, and enter terminal in it
 function dterm
-    dex $argv[1] bash
+    dex $argv[1] sh
 end
 # Stop all containers
 alias dstop 'docker stop (docker ps -aq)'
