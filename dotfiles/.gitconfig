@@ -36,6 +36,7 @@
   upm = pull --rebase --autostash origin master
   rebasem = rebase -i --autosquash origin/master --no-verify
   rebasec = rebase --continue
+  cpc = cherry-pick --continue
   ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
   undo = reset HEAD^
   lastcommit = "!f(){ cd -- ${GIT_PREFIX:-.}; git log -1 --pretty=format:%h -- $@; }; f"
