@@ -61,6 +61,7 @@ for file in $DOTFILES_DIR/.* $DOTFILES_DIR/*; do
 done
 
 # # We'll handle .config files recursively
+mkdir -p $HOME/.config
 for subdirectory in .config; do
   for file in $DOTFILES_DIR/$subdirectory/.* $DOTFILES_DIR/$subdirectory/*; do
     filename=`basename $file`
