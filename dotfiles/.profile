@@ -54,6 +54,9 @@ if command -v docker &> /dev/null; then
     fi
     echo $ID
   }
+  # Build and run a ./Dockerfile
+  # Taken from https://stackoverflow.com/a/45141443/1860149
+  alias dbrun="docker build -t foo . && docker run --rm foo"
   # Get container process
   alias dps="docker ps"
   # Get latest container ID
