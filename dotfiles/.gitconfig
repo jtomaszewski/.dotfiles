@@ -13,8 +13,10 @@
   ca = commit --amend --reuse-message=HEAD
   cl = clone
   cleanse = !git ls-files --others --exclude-standard | xargs rm
+  main = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
+  remotesh = remote set-head origin --auto
   co = checkout
-  com = checkout master
+  com = "!f(){ git checkout $(git main) $@;}; f"
   conflicts = !git ls-files -u | cut -f 2 | sort -u
   cp = cherry-pick
   d = diff
@@ -34,14 +36,14 @@
   tags = !git log --tags --simplify-by-decoration --pretty='format:%ai %d' | sort
   ptag = "!f(){ git ac $1; git tag $1 && git push && git push --tags; }; f"
   up = pull --rebase --autostash
-  upm = pull --rebase --autostash origin master
-  rebasem = rebase -i --autosquash origin/master --no-verify
+  upm = "!f(){ git pull --rebase --autostash origin $(git main) $@;}; f"
+  rebasem = "!f(){ git rebase -i --autosquash origin/$(git main) --no-verify $@;}; f"
   rebasec = rebase --continue
   cpc = cherry-pick --continue
   ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
   undo = reset HEAD^
   lastcommit = "!f(){ cd -- ${GIT_PREFIX:-.}; git log -1 --pretty=format:%h -- $@; }; f"
-  fixup = "!f(){ git c --fixup $(git lastcommit $(git diff --name-only --cached)) $@;}; f"
+  fixup = "!f(){ git commit --fixup $(git lastcommit $(git diff --name-only --cached)) $@;}; f"
 [color "status"]
   added = green
   modified = red
