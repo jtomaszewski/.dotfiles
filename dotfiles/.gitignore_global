@@ -55,3 +55,10 @@ Icon^M
 
 .envrc
 .cache
+
+# vscode-java temporary files
+# ( https://github.com/redhat-developer/vscode-java/issues/618#issuecomment-749324109 )
+#**/*.project
+#**/*.factorypath
+#**/*.settings
+#**/*.classpath
