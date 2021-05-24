@@ -75,3 +75,5 @@
 # Custom git configs per directory
 [includeIf "gitdir:~/src/mgm/"]
     path = ~/src/mgm/.gitconfig
+[pull]
+	rebase = true
