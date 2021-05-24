@@ -21,6 +21,11 @@ if command -v direnv &>/dev/null
     direnv hook fish | source
 end
 
+if test -d /opt/homebrew/opt/openjdk@11/bin
+    set -x JAVA_HOME /opt/homebrew/opt/openjdk@11
+    set -g fish_user_paths "$JAVA_HOME/bin" $fish_user_paths
+end
+
 set -x EDITOR vim
 
 # Colors in `less`!
