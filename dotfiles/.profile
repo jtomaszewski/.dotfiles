@@ -29,6 +29,11 @@ if [ -f "$HOME/.dotfiles/custom/profile" ]; then
   source "$HOME/.dotfiles/custom/profile"
 fi
 
+if test -d /opt/homebrew/opt/openjdk@11/bin; then
+  export JAVA_HOME=/opt/homebrew/opt/openjdk@11
+  export PATH="$JAVA_HOME/bin:$PATH"
+fi
+
 export EDITOR=vim
 
 if command -v apt-get &> /dev/null; then
