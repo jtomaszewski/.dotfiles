@@ -81,3 +81,5 @@
     path = ~/src/mgm/.gitconfig
 [pull]
 	rebase = true
+[init]
+	defaultBranch = main
