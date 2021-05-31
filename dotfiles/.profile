@@ -44,6 +44,10 @@ if command -v apt &> /dev/null; then
   alias as="apt search"
 fi
 
+if command -v kubectl &> /dev/null; then
+  alias k='kubectl'
+fi
+
 if command -v docker &> /dev/null; then
   # Short alias for docker command
   alias d='docker'

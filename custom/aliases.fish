@@ -3,6 +3,8 @@ if test -d /opt/homebrew/bin
     alias ibrew='arch -x86_64 /usr/local/bin/brew'
 end
 
+alias k='kubectl'
+
 # Short alias for docker command
 alias d='docker'
 # Find container ID by ID or name
