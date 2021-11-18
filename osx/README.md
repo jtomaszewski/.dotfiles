@@ -17,6 +17,9 @@
 - apps
 
   ```
+  brew install mackup
+  # Create ~/.mackup - by symlinking ~/Dropbox/Mackup or cloning repo like jtomaszewski/mackup-*
+  
   brew cask install adobe-reader
   brew cask install battle-net
   brew cask install google-chrome
