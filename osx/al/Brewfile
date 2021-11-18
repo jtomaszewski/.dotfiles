@@ -1,0 +1,136 @@
+tap "aws/tap"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-versions"
+tap "homebrew/core"
+tap "homebrew/services"
+# Automatic configure script builder
+brew "autoconf"
+# Tool for generating GNU Standards-compliant Makefiles
+brew "automake"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
+brew "asdf"
+# Official Amazon AWS command-line interface
+brew "awscli"
+# Parser generator
+brew "bison"
+# Library for manipulating PNG images
+brew "libpng"
+# Software library to render fonts
+brew "freetype"
+# GNU internationalization (i18n) and localization (l10n) library
+brew "gettext"
+# Color-highlighted diff(1) output
+brew "colordiff"
+# Load/unload environment variables based on $PWD
+brew "direnv"
+# Manage compile and link flags for libraries
+brew "pkg-config"
+# HTTP/2 C Library
+brew "nghttp2"
+# Generate introspection data for GObject libraries
+brew "gobject-introspection"
+# Image manipulation library
+brew "jpeg"
+# Subtitle renderer for the ASS/SSA subtitle format
+brew "libass"
+# Secure Reliable Transport
+brew "srt"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
+# User-friendly command-line shell for UNIX-like operating systems
+brew "fish"
+# GitHub command-line tool
+brew "gh"
+# Lossy LZW compression, reduces GIF file sizes by 30-50%
+brew "giflossy"
+# Enable transparent encryption/decryption of files in a git repo
+brew "git-crypt"
+# GNU Pretty Good Privacy (PGP) package
+brew "gnupg"
+# Framework for layout and rendering of i18n text
+brew "pango"
+# Library to render SVG files using Cairo
+brew "librsvg"
+# Graph visualization software from AT&T and Bell Labs
+brew "graphviz"
+# Kubernetes package manager
+brew "helm"
+# Improved top (interactive process viewer)
+brew "htop"
+# Add GitHub support to git on the command-line
+brew "hub"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
+# Migrate or backup IMAP mail accounts
+brew "imapsync"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Network authentication protocol
+brew "krb5"
+# Kubernetes command-line interface
+brew "kubernetes-cli"
+# Sophisticated file transfer program
+brew "lftp"
+# BSD-style licensed readline alternative
+brew "libedit"
+# Conversion library
+brew "libiconv"
+# Postgres C API library
+brew "libpq"
+# GNOME XML library
+brew "libxml2"
+# C library for reading, creating, and modifying zip archives
+brew "libzip"
+# Keep your Mac's application settings in sync
+brew "mackup"
+# NCurses Disk Usage
+brew "ncdu"
+# Install NodeJS versions
+brew "node-build"
+# Generate C-based recognizers from regular expressions
+brew "re2c"
+# Reattach process (e.g., tmux) to background
+brew "reattach-to-user-namespace"
+# Utility that provides fast incremental file transfer
+brew "rsync"
+# Send macOS User Notifications from the command-line
+brew "terminal-notifier"
+# Text interface for Git repositories
+brew "tig"
+# Terminal multiplexer
+brew "tmux"
+# Manage complex tmux sessions easily
+brew "tmuxinator"
+# Executes a program periodically, showing output fullscreen
+brew "watch"
+# Internet file retriever
+brew "wget"
+# Process YAML documents from the CLI
+brew "yq"
+# General-purpose lossless data-compression library
+brew "zlib"
+# View, print, and comment on PDF documents
+cask "adobe-acrobat-reader"
+# Prebuilt OpenJDK binaries
+cask "adoptopenjdk8"
+# Open-source KVM software
+cask "barrier"
+# App to build and share containerized applications and microservices
+cask "docker"
+# Web browser
+cask "firefox"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
+# File archiver
+cask "keka"
+# Office suite
+cask "magicprefs"
+# Move and resize windows with ease
+cask "spectacle"
+# Open-source code editor
+cask "visual-studio-code"
+# Multimedia player
+cask "vlc"
