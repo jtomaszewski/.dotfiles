@@ -38,7 +38,9 @@
   tags = !git log --tags --simplify-by-decoration --pretty='format:%ai %d' | sort
   ptag = "!f(){ git ac $1; git tag $1 && git push && git push --tags; }; f"
   up = pull --rebase --autostash
+  me = pull --rebase=false --autostash
   upm = "!f(){ git pull --rebase --autostash origin $(git main) $@;}; f"
+  mem = "!f(){ git pull --rebase=false --autostash origin $(git main) $@;}; f"
   rebasem = "!f(){ git rebase -i --autosquash origin/$(git main) --no-verify $@;}; f"
   rebasec = rebase --continue
   cpc = cherry-pick --continue
