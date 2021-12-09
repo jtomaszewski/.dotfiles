@@ -21,7 +21,10 @@ if command -v direnv &>/dev/null
     direnv hook fish | source
 end
 
-if test -d /opt/homebrew/opt/openjdk@11/bin
+if test -d /usr/local/opt/openjdk/bin
+    set -x JAVA_HOME /usr/local/opt/openjdk
+    set -g fish_user_paths "$JAVA_HOME/bin" $fish_user_paths
+else if test -d /opt/homebrew/opt/openjdk@11/bin
     set -x JAVA_HOME /opt/homebrew/opt/openjdk@11
     set -g fish_user_paths "$JAVA_HOME/bin" $fish_user_paths
 end

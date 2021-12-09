@@ -29,7 +29,10 @@ if [ -f "$HOME/.dotfiles/custom/profile" ]; then
   source "$HOME/.dotfiles/custom/profile"
 fi
 
-if test -d /opt/homebrew/opt/openjdk@11/bin; then
+if test -d /usr/local/opt/openjdk/bin; then
+  export JAVA_HOME=/usr/local/opt/openjdk
+  export PATH="$JAVA_HOME/bin:$PATH"
+elif test -d /opt/homebrew/opt/openjdk@11/bin; then
   export JAVA_HOME=/opt/homebrew/opt/openjdk@11
   export PATH="$JAVA_HOME/bin:$PATH"
 fi
