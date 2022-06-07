@@ -21,6 +21,7 @@
   cp = cherry-pick
   cpc = cherry-pick --continue
   d = diff
+  dc = diff --cached
   f = fetch
   fixup = "!f(){ git commit --fixup $(git lastcommit $(git diff --name-only --cached)) $@;}; f"
   ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
