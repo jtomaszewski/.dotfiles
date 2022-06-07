@@ -7,47 +7,47 @@
   aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
   authors = "!git log --format='%aN <%aE>' | awk '{arr[$0]++} END{for (i in arr){print arr[i], i;}}' | sort -rn | cut -d' ' -f2-"
   b = branch
-  branchname = !git branch | awk '/^\\* / { print $2 }'
-  branches = "! f() { for k in $(git branch $@ | sed 's/^..//; s/ .*//'); do echo "$(git log -1 --pretty='%Cgreen%ci %Cblue(%cr)%Creset ' $k) $k" ; done | sort ; }; f"
-  bsh = "!f(){ git branch --set-upstream-to=origin/$(git branchname) $(git branchname) $@;}; f"
   bls = branches
+  branches = "! f() { for k in $(git branch $@ | sed 's/^..//; s/ .*//'); do echo "$(git log -1 --pretty='%Cgreen%ci %Cblue(%cr)%Creset ' $k) $k" ; done | sort ; }; f"
+  branchname = !git branch | awk '/^\\* / { print $2 }'
+  bsh = "!f(){ git branch --set-upstream-to=origin/$(git branchname) $(git branchname) $@;}; f"
   c = commit
   ca = commit --amend --reuse-message=HEAD
   cl = clone
   cleanse = !git ls-files --others --exclude-standard | xargs rm
-  main = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
-  remotesh = remote set-head origin --auto
   co = checkout
   com = "!f(){ git checkout $(git main) $@;}; f"
   conflicts = !git ls-files -u | cut -f 2 | sort -u
   cp = cherry-pick
+  cpc = cherry-pick --continue
   d = diff
   f = fetch
+  fixup = "!f(){ git commit --fixup $(git lastcommit $(git diff --name-only --cached)) $@;}; f"
+  ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
+  lastcommit = "!f(){ cd -- ${GIT_PREFIX:-.}; git log -1 --pretty=format:%h -- $@; }; f"
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  main = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
+  me = pull --rebase=false --autostash
+  mem = "!f(){ git pull --rebase=false --autostash origin $(git main) $@;}; f"
+  ptag = "!f(){ git ac $1; git tag $1 && git push && git push --tags; }; f"
+  pu = !git push origin `git branch --show-current`
+  publish = "!f(){ git push -u $1 $(git symbolic-ref --short HEAD); }; f"
+  pushfl = push --force-with-lease
+  rebasec = rebase --continue
+  rebasem = "!f(){ git rebase -i --autosquash origin/$(git main) --no-verify $@;}; f"
+  remotesh = remote set-head origin --auto
   root = !cd $(git rev-parse --show-toplevel)
   skip = update-index --assume-unchanged
   st = status
-  todo = grep --heading --break --ignore-case -e 'TODO'
-  unskip = update-index --assume-changed
   subtree = "!/apps/git/contrib/subtree/git-subtree.sh"
   subtree-merge = "!f(){ git fetch $2 && git subtree merge --prefix=$1 $2/$3; }; f" # arguments: [prefix, remote, branch]
   subtree-push = "!f(){ git subtree split --prefix $1 -b $3 && git push $2 $2:$3; }; f" # same as above
-  publish = "!f(){ git push -u $1 $(git symbolic-ref --short HEAD); }; f"
-  pushfl = push --force-with-lease
-  pu = !git push origin `git branch --show-current`
   tags = !git log --tags --simplify-by-decoration --pretty='format:%ai %d' | sort
-  ptag = "!f(){ git ac $1; git tag $1 && git push && git push --tags; }; f"
-  up = pull --rebase --autostash
-  me = pull --rebase=false --autostash
-  upm = "!f(){ git pull --rebase --autostash origin $(git main) $@;}; f"
-  mem = "!f(){ git pull --rebase=false --autostash origin $(git main) $@;}; f"
-  rebasem = "!f(){ git rebase -i --autosquash origin/$(git main) --no-verify $@;}; f"
-  rebasec = rebase --continue
-  cpc = cherry-pick --continue
-  ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
+  todo = grep --heading --break --ignore-case -e 'TODO'
   undo = reset HEAD^
-  lastcommit = "!f(){ cd -- ${GIT_PREFIX:-.}; git log -1 --pretty=format:%h -- $@; }; f"
-  fixup = "!f(){ git commit --fixup $(git lastcommit $(git diff --name-only --cached)) $@;}; f"
+  unskip = update-index --assume-changed
+  up = pull --rebase --autostash
+  upm = "!f(){ git pull --rebase --autostash origin $(git main) $@;}; f"
 [color "status"]
   added = green
   modified = red
