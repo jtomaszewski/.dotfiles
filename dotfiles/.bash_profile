@@ -25,12 +25,14 @@ unset MAILCHECK
 # Load Bash It
 source $BASH_IT/bash_it.sh
 
-# asdf support
 if [ -d $HOME/.asdf ]; then
-  . $HOME/.asdf/asdf.sh
-  . $HOME/.asdf/completions/asdf.bash
+  if [ -f $HOME/.asdf/completions/asdf.bash ]; then
+    . $HOME/.asdf/completions/asdf.bash
+  fi
+  if [ -f /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash ]; then
+    . /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+  fi
 fi
-
 
 if [ -d $HOME/.rbenv ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
