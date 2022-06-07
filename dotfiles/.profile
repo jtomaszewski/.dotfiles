@@ -25,6 +25,15 @@ if [ -d "$HOME/.bin" ]; then
   export PATH="$HOME/.bin:$PATH"
 fi
 
+if [ -d $HOME/.asdf ]; then
+  if [ -f $HOME/.asdf/asdf.sh ]; then
+    . $HOME/.asdf/asdf.sh
+  fi
+  if [ -f /usr/local/opt/asdf/libexec/asdf.sh ]; then
+    . /usr/local/opt/asdf/libexec/asdf.sh
+  fi
+fi
+
 if [ -f "$HOME/.dotfiles/custom/profile" ]; then
   source "$HOME/.dotfiles/custom/profile"
 fi
