@@ -34,6 +34,7 @@
   pu = !git push origin `git branch --show-current`
   publish = "!f(){ git push -u $1 $(git symbolic-ref --short HEAD); }; f"
   pushfl = push --force-with-lease
+  r = reset
   rb = rebase
   rbc = rebase --continue
   rbm = "!f(){ git rebase -i --autosquash origin/$(git main) --no-verify $@;}; f"
