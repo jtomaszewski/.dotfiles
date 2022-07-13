@@ -14,7 +14,11 @@
   c = commit
   ca = commit --amend --reuse-message=HEAD
   cl = clone
-  cleanse = !git ls-files --others --exclude-standard | xargs rm
+  cleanse = "!f(){ \
+    git reset -q -- ${@:-.} && \
+    git checkout -- ${@:-.} && \
+    git clean -df ${@:-.}; \
+  }; f"
   co = checkout
   com = "!f(){ git checkout $(git main) $@;}; f"
   conflicts = !git ls-files -u | cut -f 2 | sort -u
