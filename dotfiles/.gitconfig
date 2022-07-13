@@ -20,7 +20,7 @@
     git clean -df ${@:-.}; \
   }; f"
   co = checkout
-  com = "!f(){ git checkout $(git main) $@;}; f"
+  com = "!f(){ git checkout $(git main-branch) $@;}; f"
   conflicts = !git ls-files -u | cut -f 2 | sort -u
   cp = cherry-pick
   cpc = cherry-pick --continue
@@ -31,9 +31,9 @@
   ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
   lastcommit = "!f(){ cd -- ${GIT_PREFIX:-.}; git log -1 --pretty=format:%h -- $@; }; f"
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  main = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
+  main-branch = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
   me = pull --rebase=false --autostash
-  mem = "!f(){ git pull --rebase=false --autostash origin $(git main) $@;}; f"
+  mem = "!f(){ git pull --rebase=false --autostash origin $(git main-branch) $@;}; f"
   ptag = "!f(){ git ac $1; git tag $1 && git push && git push --tags; }; f"
   pu = !git push origin `git branch --show-current`
   publish = "!f(){ git push -u $1 $(git symbolic-ref --short HEAD); }; f"
@@ -41,7 +41,7 @@
   r = reset
   rb = rebase
   rbc = rebase --continue
-  rbm = "!f(){ git rebase -i --autosquash origin/$(git main) --no-verify $@;}; f"
+  rbm = "!f(){ git rebase -i --autosquash origin/$(git main-branch) --no-verify $@;}; f"
   remotesh = remote set-head origin --auto
   root = !cd $(git rev-parse --show-toplevel)
   skip = update-index --assume-unchanged
@@ -54,7 +54,7 @@
   undo = reset HEAD^
   unskip = update-index --assume-changed
   up = pull --rebase --autostash
-  upm = "!f(){ git pull --rebase --autostash origin $(git main) $@;}; f"
+  upm = "!f(){ git pull --rebase --autostash origin $(git main-branch) $@;}; f"
 [color "status"]
   added = green
   modified = red
