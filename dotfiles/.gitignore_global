@@ -16,6 +16,8 @@ __pycache__
 # Installer logs
 ###################
 pip-log.txt
+npm-debug.log
+yarn-error.log
 
 # Unit test / coverage reports
 ###################
