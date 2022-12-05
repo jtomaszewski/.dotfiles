@@ -1,63 +1,169 @@
 [alias]
+  # Shorthand for `add`
   a = add
+
+  # Shorthand for `add --all`
   aa = add --all
+
+  # Stage all changes and create a commit with a single command
   ac = !git add --all && git commit -a -m
+
+  # Stage all changes and create a commit with the same message as the previous commit
   acc = !git add . && git commit -a --reuse-message=HEAD
+
+  # Define new git alias
   alias = "!sh -c '[ $# = 2 ] && git config --global alias.\"$1\" \"$2\" && exit 0 || echo \"usage: git alias <new alias> <original command>\" >&2 && exit 1' -"
+
+  # List all defined aliases
   aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+
+  # List all authors who have contributed to the repository, sorted by the number of commits they have made
   authors = "!git log --format='%aN <%aE>' | awk '{arr[$0]++} END{for (i in arr){print arr[i], i;}}' | sort -rn | cut -d' ' -f2-"
+
+  # Shorthand for `branch`
   b = branch
+
+  # List all branches in the repository
   bls = branches
+
+  # List all branches in the repository, with the date and time of the last commit for each branch
   branches = "! f() { for k in $(git branch $@ | sed 's/^..//; s/ .*//'); do echo "$(git log -1 --pretty='%Cgreen%ci %Cblue(%cr)%Creset ' $k) $k" ; done | sort ; }; f"
+
+  # View the name of the current branch
   branchname = !git branch | awk '/^\\* / { print $2 }'
+
+  # Set the upstream branch for the current branch to the origin
   bsh = "!f(){ git branch --set-upstream-to=origin/$(git branchname) $(git branchname) $@;}; f"
+
+  # Shorthand for `commit`
   c = commit
+
+  # Amend the most recent commit and keep its' message
   ca = commit --amend --reuse-message=HEAD
+
+  # Shorthand for `clone`
   cl = clone
+
+  # Create a new commit containing only the changes made in the specified commit, with a new commit message
   cf = commit --fixup
+
+  # Remove all untracked, unstaged and staged changes
   cleanse = "!f(){ \
     git reset -q -- ${@:-.} && \
     git checkout -- ${@:-.} && \
     git clean -df ${@:-.}; \
   }; f"
+
+  # Shorthand for `checkout`
   co = checkout
-  com = "!f(){ git checkout $(git main-branch) $@;}; f"
+
+  # Switch to the default branch
+  com = "!f(){ git checkout $(git default-branch) $@;}; f"
+
+  # View a list of files with merge conflicts
   conflicts = !git ls-files -u | cut -f 2 | sort -u
+
+  # Apply the changes from the specified commit to the current branch
   cp = cherry-pick
+
+  # Continue a cherry-pick operation that was previously interrupted
   cpc = cherry-pick --continue
+
+  # View unstaged changes
   d = diff
+
+  # View staged changes
   ds = diff --staged
-  dc = diff --cached
+
+  # View both unstaged and staged changes
   da = diff HEAD
+
+  # Shorthand for `fetch`
   f = fetch
+
+  # Fix up the last commit that has been changing any of the files that currently contains staged changes
   fixup = "!f(){ git commit --fixup $(git lastcommit $(git diff --name-only --cached)) $@;}; f"
+
+  # Create .gitignore if it doesn't exist, and add the specified file to it
   ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
+
+  # View the last commit on the specified branch
   lastcommit = "!f(){ cd -- ${GIT_PREFIX:-.}; git log -1 --pretty=format:%h -- $@; }; f"
+
+  # View the commit history for the repository
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  main-branch = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
+
+  # View the name of the default branch of the repository
+  default-branch = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
+
+  # Pull changes from the remote repository, without rebasing
   me = pull --rebase=false --autostash
-  mem = "!f(){ git pull --rebase=false --autostash origin $(git main-branch) $@;}; f"
+
+  # Pull changes from the default branch of the remote repository, without rebasing
+  mem = "!f(){ git pull --rebase=false --autostash origin $(git default-branch) $@;}; f"
+
+  # Create a new tag and push it to the remote repository
   ptag = "!f(){ git ac $1; git tag $1 && git push && git push --tags; }; f"
+
+  # Push the current branch to the remote repository
   pu = !git push origin `git branch --show-current`
-  publish = "!f(){ git push -u $1 $(git symbolic-ref --short HEAD); }; f"
+
+  # Force push with lease
   pushfl = push --force-with-lease
+
+  # Shorthand for `reset`
   r = reset
+
+  # Shorthand for `rebase`
   rb = rebase
+
+  # Continue a rebase operation that has been interrupted by conflicts
   rbc = rebase --continue
-  rbm = "!f(){ git rebase -i --autosquash origin/$(git main-branch) --no-verify $@;}; f"
+
+  # Perform an interactive rebase onto the default branch of the origin repository
+  rbm = "!f(){ git rebase -i --autosquash origin/$(git default-branch) --no-verify $@;}; f"
+
+  # Set the default remote branch for the origin remote
   remotesh = remote set-head origin --auto
+
+  # Navigate to the root directory of the git repository
   root = !cd $(git rev-parse --show-toplevel)
+
+  # Mark a file as unchanged, so that git will not track any changes made to it
   skip = update-index --assume-unchanged
+
+  # Shorthand for `status`
   st = status
+
+  # Use the subtree command from the git contrib directory
   subtree = "!/apps/git/contrib/subtree/git-subtree.sh"
-  subtree-merge = "!f(){ git fetch $2 && git subtree merge --prefix=$1 $2/$3; }; f" # arguments: [prefix, remote, branch]
-  subtree-push = "!f(){ git subtree split --prefix $1 -b $3 && git push $2 $2:$3; }; f" # same as above
+
+  # Merge a branch from a remote repository into the current repository using the subtree command
+  # Arguments: [prefix, remote, branch]
+  subtree-merge = "!f(){ git fetch $2 && git subtree merge --prefix=$1 $2/$3; }; f"
+
+  # Push changes in a subtree to a remote repository
+  # Arguments: [prefix, remote, branch]
+  subtree-push = "!f(){ git subtree split --prefix $1 -b $3 && git push $2 $2:$3; }; f"
+
+  # List all tags in the repository, along with the date and time of the commits they refer to
   tags = !git log --tags --simplify-by-decoration --pretty='format:%ai %d' | sort
+
+  # Search for TODO comments in the repository
   todo = grep --heading --break --ignore-case -e 'TODO'
+
+  # Undo the last commit, leaving the changes in the working directory
   undo = reset HEAD^
+
+  # Mark a file that was previously marked as unchanged as changed, so that git will track any changes made to it
   unskip = update-index --assume-changed
+
+  # Pull changes from a remote repository and rebase the current branch onto the updated branch
   up = pull --rebase --autostash
-  upm = "!f(){ git pull --rebase --autostash origin $(git main-branch) $@;}; f"
+
+  # Pull changes from the default branch of the origin repository and rebase the current branch onto the updated branch
+  upm = "!f(){ git pull --rebase --autostash origin $(git default-branch) $@;}; f"
+
 [color "status"]
   added = green
   modified = red
