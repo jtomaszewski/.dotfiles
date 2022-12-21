@@ -44,17 +44,48 @@
   # Shorthand for `clone`
   cl = clone
 
-  # Create a new commit as a fixup of the specified commit
-  cf = commit --fixup
+  # Create a new commit as a fixup of the specified commit.
+  #
+  # If no commit hash is given it will fixup the last commit
+  # that changed at least one of the currently staged files.
+  #
+  # Usage: g cf [<hash>]
+  cf = "!f(){ \
+    export COMMIT=${1:-$(git lcs)} && \
+    git commit --fixup $COMMIT ; \
+  }; f"
 
-  # Create a new commit as a fixup of the specified commit and replace its' message
-  cfa = "!f(){ git commit --fixup amend:$1 ${@:2} ; }; f"
+  # Create a new commit as a fixup of the specified commit,
+  # but with replacing the commit message.
+  #
+  # If no commit hash is given, it will fixup the last commit
+  # that changed at least one of the currently staged files.
+  #
+  # Usage: g cfa [<hash>]
+  cfa = "!f(){ \
+    export COMMIT=${1:-$(git lcs)} && \
+    git commit --fixup amend:$COMMIT ; \
+  }; f"
+
+  # Same as `cf`, but will afterwards rebase the commit.
+  cfrb = "!f(){ \
+    export COMMIT=${1:-$(git lcs)} && \
+    git commit --fixup $COMMIT && \
+    git rebase -i --autostash --autosquash $COMMIT~1 ; \
+  }; f"
+
+  # Same as `cfa`, but will afterwards rebase the commit.
+  cfarb = "!f(){ \
+    export COMMIT=${1:-$(git lcs)} && \
+    git commit --fixup amend:$COMMIT && \
+    git rebase -i --autostash --autosquash $COMMIT~1 ; \
+  }; f"
 
   # Remove all untracked, unstaged and staged changes
   cleanse = "!f(){ \
     git reset -q -- ${@:-.} && \
     git checkout -- ${@:-.} && \
-    git clean -df ${@:-.}; \
+    git clean -df ${@:-.} ; \
   }; f"
 
   # Shorthand for `checkout`
@@ -84,14 +115,20 @@
   # Shorthand for `fetch`
   f = fetch
 
-  # Fix up the last commit that has been changing any of the files that currently contains staged changes
-  fixup = "!f(){ git commit --fixup $(git lastcommit $(git diff --name-only --cached)) $@;}; f"
+  # Return the reference of the last commit
+  # that changed anything in the given paths.
+  #
+  # Usage: git lc <paths...>
+  lc = "!f(){ cd -- ${GIT_PREFIX:-.}; git log -1 --pretty=format:%h -- $@; }; f"
+
+  # Return the reference of the last commit
+  # that changed at least one of the currently staged files.
+  #
+  # Usage: git lcs
+  lcs = !git lc $(git diff --name-only --staged)
 
   # Create .gitignore if it doesn't exist, and add the specified file to it
   ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
-
-  # View the last commit on the specified branch
-  lastcommit = "!f(){ cd -- ${GIT_PREFIX:-.}; git log -1 --pretty=format:%h -- $@; }; f"
 
   # View the commit history for the repository
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
