@@ -195,7 +195,7 @@
   # Search for TODO comments in the repository
   todo = grep --heading --break --ignore-case -e 'TODO'
 
-  # Undo the last commit, leaving the changes in the working directory
+  # Undo the last commit, but leave its' changes in the working directory
   undo = reset HEAD^
 
   # Mark a file that was previously marked as unchanged as changed, so that git will track any changes made to it
