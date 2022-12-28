@@ -23,11 +23,18 @@
   # Shorthand for `branch`
   b = branch
 
-  # List all branches in the repository
-  bls = branches
-
-  # List all branches in the repository, with the date and time of the last commit for each branch
-  branches = "! f() { for k in $(git branch $@ | sed 's/^..//; s/ .*//'); do echo "$(git log -1 --pretty='%Cgreen%ci %Cblue(%cr)%Creset ' $k) $k" ; done | sort ; }; f"
+  # List branches with their last commit date, sorted by the last commit date ascending (most recent first)
+  # bls = "! f() { for k in $(git branch $@ | sed 's/^..//; s/ .*//'); do echo "$(git log -1 --pretty='%Cgreen%ci %Cblue(%cr)%Creset ' $k) $k" ; done | sort ; }; f"
+  bls = "!f() { \
+    git for-each-ref --sort=committerdate refs/heads --format='%(refname:short)|%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' --color=always \
+    | while read line; do \
+      branch=$(echo \"$line\" | awk 'BEGIN { FS = \"|\" }; { print $1 }' | tr -d '*'); \
+      ahead=$(git rev-list --count \"..${branch}\"); \
+      behind=$(git rev-list --count \"${branch}..\"); \
+      colorline=$(echo \"$line\" | sed 's/^[^|]*|//'); \
+      echo \"$ahead|$behind|$colorline\" | awk -F'|' -vOFS='|' '{$5=substr($5,1,70)}1' ; \
+    done | ( echo \"ahead|behind||branch|lastcommit|message|author\\n\" && cat) | column -ts'|' ; }; \
+  f"
 
   # View the name of the current branch
   branchname = !git branch | awk '/^\\* / { print $2 }'
