@@ -51,10 +51,10 @@
 
   # Create a new commit as a fixup of the specified commit.
   #
-  # If no commit hash is given it will fixup the last commit
+  # If no commit hash is given selects the commit
   # that changed at least one of the currently staged files.
   #
-  # Usage: g cf [<hash>]
+  # Usage: g cf [<commit-hash>]
   cf = "!f(){ \
     export COMMIT=${1:-$(git lcs)} && \
     git commit --fixup $COMMIT ; \
@@ -63,23 +63,23 @@
   # Create a new commit as a fixup of the specified commit,
   # but with replacing the commit message.
   #
-  # If no commit hash is given, it will fixup the last commit
+  # If no commit hash is given selects the commit
   # that changed at least one of the currently staged files.
   #
-  # Usage: g cfa [<hash>]
+  # Usage: g cfa [<commit-hash>]
   cfa = "!f(){ \
     export COMMIT=${1:-$(git lcs)} && \
     git commit --fixup amend:$COMMIT ; \
   }; f"
 
-  # Same as `cf`, but will afterwards rebase the commit.
+  # Same as `cf` but afterwards rebases the commit.
   cfrb = "!f(){ \
     export COMMIT=${1:-$(git lcs)} && \
     git commit --fixup $COMMIT && \
     git -c sequence.editor=: rebase -i --autostash --autosquash $COMMIT~1 ; \
   }; f"
 
-  # Same as `cfa`, but will afterwards rebase the commit.
+  # Same as `cfa` but afterwards rebases the commit.
   cfarb = "!f(){ \
     export COMMIT=${1:-$(git lcs)} && \
     git commit --fixup amend:$COMMIT && \
