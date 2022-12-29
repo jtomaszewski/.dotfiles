@@ -166,7 +166,7 @@
   rbc = rebase --continue
 
   # Perform an interactive rebase onto the default branch of the origin repository
-  rbm = "!f(){ git rebase -i --autosquash origin/$(git default-branch) --no-verify $@;}; f"
+  rbm = "!f(){ git rebase -i --autosquash --autostash origin/$(git default-branch) --no-verify $@;}; f"
 
   # Set the default remote branch for the origin remote
   remotesh = remote set-head origin --auto
