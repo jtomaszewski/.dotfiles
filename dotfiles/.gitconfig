@@ -76,14 +76,14 @@
   cfrb = "!f(){ \
     export COMMIT=${1:-$(git lcs)} && \
     git commit --fixup $COMMIT && \
-    git rebase -i --autostash --autosquash $COMMIT~1 ; \
+    git -c sequence.editor=: rebase -i --autostash --autosquash $COMMIT~1 ; \
   }; f"
 
   # Same as `cfa`, but will afterwards rebase the commit.
   cfarb = "!f(){ \
     export COMMIT=${1:-$(git lcs)} && \
     git commit --fixup amend:$COMMIT && \
-    git rebase -i --autostash --autosquash $COMMIT~1 ; \
+    git -c sequence.editor=: rebase -i --autostash --autosquash $COMMIT~1 ; \
   }; f"
 
   # Remove all untracked, unstaged and staged changes
