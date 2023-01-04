@@ -216,14 +216,10 @@
   # Add a global .gitignore file
   excludesfile = ~/.gitignore_global
 
-[color]
-  ui = true
-  diff = auto
-  status = auto
-  branch = auto
 [color "status"]
-  added = green
-  modified = red
+  # In `git status` command,
+  # change the color for untracked files from default red to blue
+  # (to distinguish them from modified but tracked files)
   untracked = blue
 
 [mergetool "sublime"]
