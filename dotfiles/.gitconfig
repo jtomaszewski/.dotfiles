@@ -147,8 +147,17 @@
   # Pull changes from the default branch of the remote repository, without rebasing
   mem = "!f(){ git pull --rebase=false --autostash origin $(git default-branch) $@;}; f"
 
-  # Create a new tag and push it to the remote repository
-  ptag = "!f(){ git ac $1; git tag $1 && git push && git push --tags; }; f"
+  # Create a commit with a tag for all the current changes and push it to the remote
+  #
+  # Usage: git ptag <tag-name>
+  #
+  # For example, running `git ptag v1.2.3` will:
+  #
+  # 1. Stage all tracked files
+  # 2. Commit them with a `v1.2.3` commit message
+  # 3. Create a `v1.2.3` tag
+  # 4. Push the current branch with both the commit and the tag
+  ptag = "!f(){ git ac $1; git tag $1 && git push --follow-tags; }; f"
 
   # Push the current branch to the remote repository
   pu = !git push origin `git branch --show-current`
