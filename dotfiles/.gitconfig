@@ -237,8 +237,13 @@
 [branch "main"]
 	rebase = true
 
+# File rename detection is computationally expensive,
+# so git limits it to 100 files by default.
+# Let's increase it a bit for better UX.
+[diff]
+	renamelimit = 1000
 [merge]
-	renamelimit = 3600
+	renamelimit = 1000
 
 [credential]
 	helper = osxkeychain
