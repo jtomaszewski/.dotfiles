@@ -223,6 +223,7 @@
   untracked = blue
 
 [push]
+  # Push the current branch to a branch of the same name
 	default = current
 
 [pull]
