@@ -212,43 +212,51 @@
   # Pull changes from the default branch of the origin repository and rebase the current branch onto the updated branch
   upm = "!f(){ git pull --rebase --autostash origin $(git default-branch) $@;}; f"
 
-[color "status"]
-  added = green
-  modified = red
-  untracked = blue
+[core]
+  # Add a global .gitignore file
+  excludesfile = ~/.gitignore_global
+  editor = vim
+
 [color]
   ui = true
   diff = auto
   status = auto
   branch = auto
-[core]
-  excludesfile = ~/.gitignore_global
-  editor = vim
+[color "status"]
+  added = green
+  modified = red
+  untracked = blue
+
 [mergetool "sublime"]
   cmd = subl -w $MERGED
   trustExitCode = false
+
 [push]
 	default = current
+
+[pull]
+  rebase = true
+
 [hub]
 	protocol = ssh
+
 [branch]
 	autosetuprebase = always
 [branch "master"]
 	rebase = true
 [branch "main"]
 	rebase = true
+
 [merge]
 	renamelimit = 3600
+
 [credential]
 	helper = osxkeychain
 
 # Custom git configs per directory
 [includeIf "gitdir:~/src/mgm/"]
     path = ~/src/mgm/.gitconfig
-[pull]
-	rebase = true
-[init]
-	defaultBranch = main
+
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
