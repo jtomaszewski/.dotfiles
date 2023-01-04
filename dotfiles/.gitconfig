@@ -222,10 +222,6 @@
   # (to distinguish them from modified but tracked files)
   untracked = blue
 
-[mergetool "sublime"]
-  cmd = subl -w $MERGED
-  trustExitCode = false
-
 [push]
 	default = current
 
