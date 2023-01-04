@@ -248,7 +248,9 @@
 [credential]
 	helper = osxkeychain
 
+# Config for hub cli tool
 [hub]
+  # Use ssh protocol (instead of https)
 	protocol = ssh
 
 # Custom git configs per directory
