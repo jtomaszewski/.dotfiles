@@ -257,6 +257,8 @@
 [includeIf "gitdir:~/src/mgm/"]
     path = ~/src/mgm/.gitconfig
 
+# Default git lfs config
+# (it was added by the `git lfs install` command)
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
