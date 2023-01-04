@@ -226,12 +226,10 @@
   # Push the current branch to a branch of the same name
 	default = current
 
+# Pull with rebase (instead of merge)
+# (for existing and future repos)
 [pull]
   rebase = true
-
-[hub]
-	protocol = ssh
-
 [branch]
 	autosetuprebase = always
 [branch "master"]
@@ -244,6 +242,9 @@
 
 [credential]
 	helper = osxkeychain
+
+[hub]
+	protocol = ssh
 
 # Custom git configs per directory
 [includeIf "gitdir:~/src/mgm/"]
