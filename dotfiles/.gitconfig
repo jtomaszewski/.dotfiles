@@ -242,27 +242,27 @@
 [pull]
   rebase = true
 [branch]
-	autosetuprebase = always
+  autosetuprebase = always
 [branch "master"]
-	rebase = true
+  rebase = true
 [branch "main"]
-	rebase = true
+  rebase = true
 
 # File rename detection is computationally expensive,
 # so git limits it to 100 files by default.
 # Let's increase it a bit for better UX.
 [diff]
-	renamelimit = 1000
+  renamelimit = 1000
 [merge]
-	renamelimit = 1000
+  renamelimit = 1000
 
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 
 # Config for hub cli tool
 [hub]
   # Use ssh protocol (instead of https)
-	protocol = ssh
+  protocol = ssh
 
 # Custom git configs per directory
 [includeIf "gitdir:~/src/mgm/"]
@@ -271,7 +271,7 @@
 # Default git lfs config
 # (it was added by the `git lfs install` command)
 [filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
