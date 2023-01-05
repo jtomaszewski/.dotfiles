@@ -233,7 +233,9 @@
 
 [push]
   # Push the current branch to a branch of the same name
-	default = current
+  default = current
+  # Avoid having to do `git branch --set-upstream` before `git push`
+  autoSetupRemote = true
 
 # Pull with rebase (instead of merge)
 # (for existing and future repos)
