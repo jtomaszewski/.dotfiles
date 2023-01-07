@@ -238,14 +238,7 @@
   autoSetupRemote = true
 
 # Pull with rebase (instead of merge)
-# (for existing and future repos)
 [pull]
-  rebase = true
-[branch]
-  autosetuprebase = always
-[branch "master"]
-  rebase = true
-[branch "main"]
   rebase = true
 
 # File rename detection is computationally expensive,
