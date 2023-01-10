@@ -241,6 +241,12 @@
 [pull]
   rebase = true
 
+[rebase]
+  # Use --autosquash option by default
+  autosquash = true
+  # Use --autostash option by default
+  autostash = true
+
 # File rename detection is computationally expensive,
 # so git limits it to 100 files by default.
 # Let's increase it a bit for better UX.
