@@ -216,10 +216,10 @@
   unskip = update-index --assume-changed
 
   # Pull changes from a remote repository and rebase the current branch onto the updated branch
-  up = pull --rebase --autostash
+  up = pull
 
   # Pull changes from the default branch of the origin repository and rebase the current branch onto the updated branch
-  upm = "!f(){ git pull --rebase --autostash origin $(git default-branch) $@;}; f"
+  upm = "!f(){ git pull origin $(git default-branch) $@;}; f"
 
 [core]
   # Add a global .gitignore file
