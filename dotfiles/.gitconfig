@@ -247,13 +247,17 @@
   # Use --autostash option by default
   autostash = true
 
-# File rename detection is computationally expensive,
-# so git limits it to 100 files by default.
-# Let's increase it a bit for better UX.
 [diff]
+  # File rename detection is computationally expensive,
+  # so git limits it to 100 files by default.
+  # Let's increase it a bit for better UX.
   renamelimit = 1000
+
 [merge]
+  # Same as diff.renamelimit
   renamelimit = 1000
+  # Use --autostash option by default
+  autostash = true
 
 [credential]
   helper = osxkeychain
