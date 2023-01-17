@@ -233,6 +233,8 @@
   # Pull changes from the default branch of the origin repository and rebase the current branch onto the updated branch
   upm = "!f(){ git pull origin $(git default-branch) $@;}; f"
 
+  upmi = upm --rebase=interactive
+
 [core]
   # Add a global .gitignore file
   excludesfile = ~/.gitignore_global
