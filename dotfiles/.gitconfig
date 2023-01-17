@@ -189,6 +189,18 @@
   # Mark a file as unchanged, so that git will not track any changes made to it
   skip = update-index --assume-unchanged
 
+  # Shorthand for `stash`
+  sh = stash
+
+  # Shorthand for `stash --untracked`
+  shu = stash -u
+
+  # Shorthand for `stash apply`
+  sha = stash apply
+
+  # Shorthand for `stash pop`
+  shp = stash pop
+
   # Shorthand for `status`
   st = status
 
