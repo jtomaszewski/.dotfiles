@@ -147,6 +147,12 @@
   # Pull changes from the default branch of the remote repository, without rebasing
   mem = "!f(){ git pull --rebase=false --autostash origin $(git default-branch) $@;}; f"
 
+  # Create an annotated tag, by giving it the same message as the tag name
+  #
+  # Usage: git atag <tag-name>
+  # Example: git atag v1.2.3
+  atag = "!f(){ git tag $1 -am $1; }; f"
+
   # Create a commit with a tag for all the current changes and push it to the remote
   #
   # Usage: git ptag <tag-name>
