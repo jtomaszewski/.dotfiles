@@ -149,21 +149,26 @@
 
   # Create an annotated tag, by giving it the same message as the tag name
   #
-  # Usage: git atag <tag-name>
+  # Usage: git atag <name>
   # Example: git atag v1.2.3
   atag = "!f(){ git tag $1 -am $1 ${@:2} ; }; f"
 
-  # Create a commit with a tag for all the current changes and push it to the remote
+  # Create an annotated tag and push it to the origin remote
   #
-  # Usage: git ptag <tag-name>
+  # Usage: git ptag <name>
+  ptag = "!f(){ git atag $1 && git push origin refs/tags/$1; }; f"
+
+  # Publish a release, by commiting all tracked changes, creating a tag and pushing it to the remote.
   #
-  # For example, running `git ptag v1.2.3` will:
+  # Usage: git acptag <name>
+  #
+  # For example, running `git acptag v1.2.3` will:
   #
   # 1. Stage all tracked files
-  # 2. Commit them with a `v1.2.3` message
+  # 2. Create a commit with `v1.2.3` message
   # 3. Create an annotated tag with `v1.2.3` name and message
   # 4. Push the current branch with both the commit and the tag
-  ptag = "!f(){ git ac $1; git tag $1 -a -m $1 && git push --follow-tags; }; f"
+  acptag = "!f(){ git ac $1; git tag $1 -a -m $1 && git push --follow-tags; }; f"
 
   # Shorthand for push
   pu = push
