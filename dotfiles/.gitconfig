@@ -168,7 +168,7 @@
   # 2. Create a commit with `v1.2.3` message
   # 3. Create an annotated tag with `v1.2.3` name and message
   # 4. Push the current branch with both the commit and the tag
-  acptag = "!f(){ git ac $1; git tag $1 -a -m $1 && git push --follow-tags; }; f"
+  acptag = "!f(){ git ac $1 && git tag $1 -a -m $1 && git push --follow-tags; }; f"
 
   # Shorthand for push
   pu = push
