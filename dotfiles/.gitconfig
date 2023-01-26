@@ -76,14 +76,14 @@
   cfrb = "!f(){ \
     export COMMIT=${1:-$(git lcs)} && \
     git commit --fixup $COMMIT && \
-    git -c sequence.editor=: rebase -i --autostash --autosquash $COMMIT~1 ; \
+    git -c sequence.editor=: rebase -i $COMMIT~1 ; \
   }; f"
 
   # Same as `cfa` but afterwards rebases the commit.
   cfarb = "!f(){ \
     export COMMIT=${1:-$(git lcs)} && \
     git commit --fixup amend:$COMMIT && \
-    git -c sequence.editor=: rebase -i --autostash --autosquash $COMMIT~1 ; \
+    git -c sequence.editor=: rebase -i $COMMIT~1 ; \
   }; f"
 
   # Remove all untracked, unstaged and staged changes
@@ -142,10 +142,10 @@
   default-branch = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
 
   # Pull changes from the remote repository, without rebasing
-  me = pull --rebase=false --autostash
+  me = pull --rebase=false
 
   # Pull changes from the default branch of the remote repository, without rebasing
-  mem = "!f(){ git pull --rebase=false --autostash origin $(git default-branch) $@;}; f"
+  mem = "!f(){ git pull --rebase=false origin $(git default-branch) $@;}; f"
 
   # Create an annotated tag, by giving it the same message as the tag name
   #
@@ -186,7 +186,7 @@
   rbc = rebase --continue
 
   # Perform an interactive rebase onto the default branch of the origin repository
-  rbm = "!f(){ git rebase -i --autosquash --autostash origin/$(git default-branch) --no-verify $@;}; f"
+  rbm = "!f(){ git rebase -i origin/$(git default-branch) --no-verify $@;}; f"
 
   # Set the default remote branch for the origin remote
   remotesh = remote set-head origin --auto
