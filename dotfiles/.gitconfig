@@ -194,6 +194,9 @@
   # Shorthand for `restore`
   rest = restore
 
+  # Shorthand for `revert`
+  rv = revert
+
   # Navigate to the root directory of the git repository
   root = !cd $(git rev-parse --show-toplevel)
 
