@@ -6,7 +6,7 @@
   aa = add --all
 
   # Stage all changes and create a commit with a single command
-  ac = !git add --all && git commit -a -m
+  ac = "!f(){ git add --all && git commit -a -m $1 ${@:2} ; }; f"
 
   # Stage all changes and create a commit with the same message as the previous commit
   acc = !git add . && git commit -a --reuse-message=HEAD
