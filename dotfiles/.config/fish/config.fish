@@ -46,4 +46,6 @@ set -g fish_user_paths "/opt/boxen/homebrew/opt/ab/bin" $fish_user_paths
 
 set -x ANDROID_SDK /Users/$USER/Library/Android/sdk
 
+set -x HOMEBREW_NO_INSTALL_CLEANUP 1
+
 set PATH $PATH /Users/$USER/Library/Android/sdk/platform-tools

@@ -130,3 +130,5 @@ fi
 if test -d $HOME/Library/Android/sdk; then
   export ANDROID_SDK=$HOME/Library/Android/sdk
 fi
+
+export HOMEBREW_NO_INSTALL_CLEANUP=1
