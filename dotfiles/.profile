@@ -48,6 +48,9 @@ fi
 
 export EDITOR=vim
 
+alias ip="curl -s https://ipinfo.io/ip"
+alias localip="ipconfig getifaddr en0"
+
 if command -v apt-get &> /dev/null; then
   alias ai="apt-get install"
 fi
