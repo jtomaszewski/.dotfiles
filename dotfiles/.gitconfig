@@ -308,3 +308,5 @@
   process = git-lfs filter-process
 [init]
 	defaultBranch = main
+[checkout]
+	defaultRemote = origin
