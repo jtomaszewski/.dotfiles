@@ -144,6 +144,9 @@
   # Pull changes from the remote repository, without rebasing
   me = pull --rebase=false
 
+  # Pull and then push
+  pup = !git up && git pu
+
   # Pull changes from the default branch of the remote repository, without rebasing
   mem = "!f(){ git pull --rebase=false origin $(git default-branch) $@;}; f"
 
