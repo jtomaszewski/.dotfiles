@@ -21,7 +21,9 @@ if command -v direnv &>/dev/null
     direnv hook fish | source
 end
 
-if test -d /usr/local/opt/openjdk/bin
+if test -f ~/.asdf/plugins/java/set-java-home.fish
+    . ~/.asdf/plugins/java/set-java-home.fish
+else if test -d /usr/local/opt/openjdk/bin
     set -x JAVA_HOME /usr/local/opt/openjdk
     set -g fish_user_paths "$JAVA_HOME/bin" $fish_user_paths
 else if test -d /opt/homebrew/opt/openjdk@11/bin
@@ -42,7 +44,7 @@ set -x LESS_TERMCAP_so \e'[38;5;246m' # begin standout-mode - info box
 set -x LESS_TERMCAP_ue \e'[0m' # end underline
 set -x LESS_TERMCAP_us \e'[04;38;5;146m' # begin underline
 
-set -g fish_user_paths "/opt/boxen/homebrew/opt/ab/bin" $fish_user_paths
+set -g fish_user_paths /opt/boxen/homebrew/opt/ab/bin $fish_user_paths
 
 set -x ANDROID_SDK /Users/$USER/Library/Android/sdk
 
