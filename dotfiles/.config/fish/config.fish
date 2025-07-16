@@ -46,7 +46,10 @@ set -x LESS_TERMCAP_us \e'[04;38;5;146m' # begin underline
 
 set -g fish_user_paths /opt/boxen/homebrew/opt/ab/bin $fish_user_paths
 
-set -x ANDROID_SDK /Users/$USER/Library/Android/sdk
+if test -d $HOME/Library/Android/sdk
+    set -x ANDROID_SDK /Users/$USER/Library/Android/sdk
+    set -x ANDROID_HOME /Users/$USER/Library/Android/sdk
+end
 
 set -x HOMEBREW_NO_INSTALL_CLEANUP 1
 

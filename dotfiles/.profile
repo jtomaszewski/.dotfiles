@@ -123,6 +123,7 @@ if test -d $HOME/.nvm; then
 fi
 
 if test -d $HOME/Library/Android/sdk; then
+  export ANDROID_HOME=$HOME/Library/Android/sdk
   export ANDROID_SDK=$HOME/Library/Android/sdk
 fi
 
