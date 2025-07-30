@@ -74,6 +74,12 @@ unset GIT_DIR GIT_WORK_TREE GIT_INDEX_FILE GIT_PREFIX
 # Move into the worktree
 cd "$worktree_dir"
 
+# Check for and run .git-worktree-setup if it exists
+if [ -f "$repo_root/.git-worktree-setup" ]; then
+  echo "🔧 Running .git-worktree-setup script"
+  "$repo_root/.git-worktree-setup" "$repo_root"
+fi
+
 # Run command if provided, otherwise open a shell
 if [ "$#" -gt 0 ]; then
   echo "▶️ Running: $*"

@@ -4,9 +4,24 @@ set -e
 
 # Parse arguments
 dry_run=false
-if [[ "$1" == "--dry-run" || "$1" == "--dry" ]]; then
-  dry_run=true
-fi
+force=false
+
+for arg in "$@"; do
+  case "$arg" in
+    --dry-run|--dry)
+      dry_run=true
+      ;;
+    --force)
+      force=true
+      ;;
+    *)
+      echo "Usage: git wclean [--dry-run|--dry] [--force]"
+      echo "  --dry-run|--dry: Show what would be removed without making changes"
+      echo "  --force: Force removal of worktrees (passed to git worktree remove)"
+      exit 1
+      ;;
+  esac
+done
 
 repo_root=$(git rev-parse --show-toplevel)
 current_dir=$(pwd)
@@ -41,10 +56,19 @@ while IFS= read -r dir; do
   fi
 
   if [[ "$dry_run" == true ]]; then
-    echo "🗑️ Would remove worktree: $dir"
+    if [[ "$force" == true ]]; then
+      echo "🗑️ Would force remove worktree: $dir"
+    else
+      echo "🗑️ Would remove worktree: $dir"
+    fi
   else
-    echo "🗑️ Removing worktree: $dir"
-    git worktree remove "$dir" || echo "⚠️ Failed to remove $dir"
+    if [[ "$force" == true ]]; then
+      echo "🗑️ Force removing worktree: $dir"
+      git worktree remove --force "$dir" || echo "⚠️ Failed to remove $dir"
+    else
+      echo "🗑️ Removing worktree: $dir"
+      git worktree remove "$dir" || echo "⚠️ Failed to remove $dir"
+    fi
   fi
 done <<< "$worktrees"
 
