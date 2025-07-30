@@ -1,0 +1,90 @@
+#!/bin/bash
+
+# git-w: Smart Git worktree helper
+#
+# USAGE:
+#   git w <name> [optional command]
+#
+# BEHAVIOR:
+#   - Treats <name> as both the branch name and worktree name.
+#   - Creates the branch if it doesn’t exist (from HEAD).
+#   - Creates a worktree at: /tmp/git-wt/<repo-name>/<name>
+#   - If worktree already exists, reuses it.
+#   - Changes directory into the worktree.
+#   - If a command is passed, runs it in that worktree.
+#   - If no command is passed, starts an interactive shell.
+#
+# EXAMPLES:
+#   git w feature-login
+#     → Creates worktree & enters shell
+#
+#   git w hotfix-123 code .
+#     → Opens VSCode in worktree
+#
+#   git w demo echo "Running in worktree"
+#     → Runs command in worktree
+
+set -e
+
+name="$1"
+shift || true  # In case no command is passed
+
+if [ -z "$name" ]; then
+  echo "Usage: git w <name> [optional command]"
+  exit 1
+fi
+
+# Get repo info
+repo_root=$(git rev-parse --show-toplevel)
+repo_name=$(basename "$repo_root")
+branch="$name"
+worktree_dir="/tmp/git-wt/${repo_name}/${name}"
+
+# Ensure parent tmpdir exists
+mkdir -p "$(dirname "$worktree_dir")"
+
+# Check if branch already has a worktree
+existing_worktree=$(git worktree list --porcelain | awk -v branch="$branch" '
+  /^worktree / { path = substr($0, 10) }
+  /^branch / && substr($0, 8) == "refs/heads/" branch { print path; exit }
+')
+
+if [ -n "$existing_worktree" ]; then
+  echo "🔄 Switching to existing worktree for branch '$branch': $existing_worktree"
+  worktree_dir="$existing_worktree"
+else
+  # Create branch if needed
+  if ! git show-ref --verify --quiet "refs/heads/$branch"; then
+    echo "📎 Creating branch '$branch' from HEAD"
+    git branch "$branch"
+  fi
+
+  # Create worktree if needed
+  if [ ! -d "$worktree_dir" ]; then
+    echo "🌱 Creating worktree: $worktree_dir"
+    git worktree add "$worktree_dir" "$branch"
+  else
+    echo "📁 Using existing worktree: $worktree_dir"
+  fi
+fi
+
+# Clean up git environment variables that might interfere
+unset GIT_DIR GIT_WORK_TREE GIT_INDEX_FILE GIT_PREFIX
+
+# Move into the worktree
+cd "$worktree_dir"
+
+# Run command if provided, otherwise open a shell
+if [ "$#" -gt 0 ]; then
+  echo "▶️ Running: $*"
+  exec "$@"
+else
+  # If sourced, just cd and return; if executed, open shell
+  if [[ "${BASH_SOURCE[0]}" != "${0}" ]] || [[ -n "$ZSH_EVAL_CONTEXT" ]]; then
+    echo "📂 Changed to: $worktree_dir"
+    return 0
+  else
+    echo "🖥️ Entering shell in: $worktree_dir"
+    exec $SHELL
+  fi
+fi

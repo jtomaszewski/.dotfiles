@@ -252,6 +252,26 @@
 
   upmi = upm --rebase=interactive
 
+  # Create and enter worktree, and optionally execute sth in it
+  # git w <branch> (<command>)
+	w = !~/.dotfiles/bin/git-w
+
+  wtr = worktree
+
+  # Get back to main worktree
+  wm = "!f(){ git w $(git default-branch) $@;}; f"
+
+  # List all worktrees
+  wls = !git worktree list
+
+  # Remove worktree
+  # git wrm <branch>
+  wrm = "!f(){ git wtr remove $@;}; f"
+
+  # Remove all worktrees
+  # git wclean
+	wclean = !~/.dotfiles/bin/git-wclean
+
 [core]
   # Add a global .gitignore file
   excludesfile = ~/.gitignore_global

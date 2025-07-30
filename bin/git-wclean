@@ -1,0 +1,55 @@
+#!/bin/bash
+
+set -e
+
+# Parse arguments
+dry_run=false
+if [[ "$1" == "--dry-run" || "$1" == "--dry" ]]; then
+  dry_run=true
+fi
+
+repo_root=$(git rev-parse --show-toplevel)
+current_dir=$(pwd)
+
+# Get list of worktrees, skip the first line (header) and extract paths
+worktrees=$(git worktree list --porcelain | grep '^worktree ' | cut -d' ' -f2-)
+
+if [ -z "$worktrees" ]; then
+  echo "⚠️ No worktrees found for this repo"
+  exit 0
+fi
+
+if [[ "$dry_run" == true ]]; then
+  echo "🔍 Dry run - showing what would be removed:"
+else
+  echo "🧹 Cleaning worktrees"
+fi
+
+while IFS= read -r dir; do
+  [ -n "$dir" ] || continue
+
+  # Skip the main repo
+  if [[ "$dir" == "$repo_root" ]]; then
+    echo "⏭️ Skipping main worktree: $dir"
+    continue
+  fi
+
+  # Skip if user is inside the worktree
+  if [[ "$current_dir" == "$dir"* ]]; then
+    echo "⏭️ Skipping current directory: $dir"
+    continue
+  fi
+
+  if [[ "$dry_run" == true ]]; then
+    echo "🗑️ Would remove worktree: $dir"
+  else
+    echo "🗑️ Removing worktree: $dir"
+    git worktree remove "$dir" || echo "⚠️ Failed to remove $dir"
+  fi
+done <<< "$worktrees"
+
+if [[ "$dry_run" == true ]]; then
+  echo "✅ Dry run complete - no changes made"
+else
+  echo "✅ Safe cleanup complete"
+fi
