@@ -40,10 +40,7 @@ repo_name=$(basename "$repo_root")
 branch="$name"
 worktree_dir="/tmp/git-wt/${repo_name}/${name}"
 
-# Ensure parent tmpdir exists
-mkdir -p "$(dirname "$worktree_dir")"
-
-# Check if branch already has a worktree
+# First, always check if branch already has a worktree anywhere
 existing_worktree=$(git worktree list --porcelain | awk -v branch="$branch" '
   /^worktree / { path = substr($0, 10) }
   /^branch / && substr($0, 8) == "refs/heads/" branch { print path; exit }
@@ -53,6 +50,8 @@ if [ -n "$existing_worktree" ]; then
   echo "🔄 Switching to existing worktree for branch '$branch': $existing_worktree"
   worktree_dir="$existing_worktree"
 else
+  # Ensure parent tmpdir exists only if we need to create a new worktree
+  mkdir -p "$(dirname "$worktree_dir")"
   # Create branch if needed
   if ! git show-ref --verify --quiet "refs/heads/$branch"; then
     echo "📎 Creating branch '$branch' from HEAD"
