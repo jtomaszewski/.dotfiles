@@ -54,3 +54,4 @@ end
 set -x HOMEBREW_NO_INSTALL_CLEANUP 1
 
 set PATH $PATH /Users/$USER/Library/Android/sdk/platform-tools
+set -gx PATH /Users/jacek/.local/bin $PATH
