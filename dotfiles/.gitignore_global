@@ -52,6 +52,7 @@ Icon^M
 \#*\#
 /tags
 .vscode
+.playwright-mcp
 
 # my custom ignored files
 .credentials
