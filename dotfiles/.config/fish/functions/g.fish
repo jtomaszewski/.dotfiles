@@ -1,4 +1,4 @@
-if which hub
+if type -q hub
   function g
   	hub $argv;
   end
