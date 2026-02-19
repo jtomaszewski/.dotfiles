@@ -55,3 +55,25 @@ set -x HOMEBREW_NO_INSTALL_CLEANUP 1
 
 set PATH $PATH /Users/$USER/Library/Android/sdk/platform-tools
 set -gx PATH /Users/jacek/.local/bin $PATH
+
+# pnpm
+set -gx PNPM_HOME "/Users/jacek/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
+
+# >>> open-file-limit (added by Codex CLI) >>>
+# Ensure at least 8192 file descriptors for interactive fish shells
+if status is-interactive
+    set -l current (sh -lc 'ulimit -n 2>/dev/null' | string collect)
+    if test -n ""
+        if test "" -lt 8192
+            ulimit -n 8192 >/dev/null 2>&1
+        end
+    else
+        # Fallback: set directly
+        ulimit -n 8192 >/dev/null 2>&1
+    end
+end
+# <<< open-file-limit <<<\n
